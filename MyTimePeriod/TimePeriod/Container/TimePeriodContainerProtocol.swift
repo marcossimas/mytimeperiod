@@ -9,8 +9,8 @@
 import Foundation
 
 // public interface ITimePeriodContainer : IList<ITimePeriod>, ITimePeriod
-protocol TimePeriodContainerProtocol: Sequence, TimePeriodProtocol {
-//protocol TimePeriodContainerProtocol: Sequence where Sequence.Iterator.Element: TimePeriodProtocol, TimePeriodProtocol {
+// protocol TimePeriodContainerProtocol: Sequence, TimePeriodProtocol {
+protocol TimePeriodContainerProtocol: Sequence, Equatable, TimePeriodProtocol {
     
     
     // ----------------------------------------------------------------------
@@ -19,7 +19,7 @@ protocol TimePeriodContainerProtocol: Sequence, TimePeriodProtocol {
 
     // ----------------------------------------------------------------------
     //bool ContainsPeriod( ITimePeriod test );
-    func containsPeriod(test:  TimePeriodProtocol) -> Bool
+    func containsPeriod(test:  TimePeriodProtocol?) -> Bool
 
     // ----------------------------------------------------------------------
     //void AddAll( IEnumerable<ITimePeriod> periods );

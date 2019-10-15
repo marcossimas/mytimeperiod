@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D33E6502356464300D1A239 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E64F2356464300D1A239 /* SortType.swift */; };
 		0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */; };
 		0D3D02A9235543CE00C46ECE /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0290235542FB00C46ECE /* TimeRange.swift */; };
 		0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */; };
@@ -24,7 +25,7 @@
 		0D3D02B62355442000C46ECE /* TimePeriodCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */; };
 		0D3D02B72355442000C46ECE /* IntervalEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0294235542FB00C46ECE /* IntervalEdge.swift */; };
 		0D3D02B82355442000C46ECE /* DurationProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */; };
-		0D3D02B92355442000C46ECE /* ListSortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0292235542FB00C46ECE /* ListSortDirection.swift */; };
+		0D3D02B92355442000C46ECE /* SortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0292235542FB00C46ECE /* SortDirection.swift */; };
 		0D3D02BA2355442000C46ECE /* TimePeriodMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */; };
 		0D3D02BB2355442000C46ECE /* DurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A2235542FB00C46ECE /* DurationProvider.swift */; };
 		0D3D02BC2355442000C46ECE /* TimeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0296235542FB00C46ECE /* TimeSpec.swift */; };
@@ -56,12 +57,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D33E64F2356464300D1A239 /* SortType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodProtocol.swift; sourceTree = "<group>"; };
 		0D3D028D235542FB00C46ECE /* TimeBlockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockProtocol.swift; sourceTree = "<group>"; };
 		0D3D028E235542FB00C46ECE /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
 		0D3D028F235542FB00C46ECE /* TimeRangeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeProtocol.swift; sourceTree = "<group>"; };
 		0D3D0290235542FB00C46ECE /* TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
-		0D3D0292235542FB00C46ECE /* ListSortDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSortDirection.swift; sourceTree = "<group>"; };
+		0D3D0292235542FB00C46ECE /* SortDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDirection.swift; sourceTree = "<group>"; };
 		0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodCalc.swift; sourceTree = "<group>"; };
 		0D3D0294235542FB00C46ECE /* IntervalEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalEdge.swift; sourceTree = "<group>"; };
 		0D3D0295235542FB00C46ECE /* PeriodRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodRelation.swift; sourceTree = "<group>"; };
@@ -158,7 +160,8 @@
 				0D3D0291235542FB00C46ECE /* Basics */,
 				0D3D029A235542FB00C46ECE /* Container */,
 				0D3D02A0235542FB00C46ECE /* Comparer */,
-				0D3D0292235542FB00C46ECE /* ListSortDirection.swift */,
+				0D3D0292235542FB00C46ECE /* SortDirection.swift */,
+				0D33E64F2356464300D1A239 /* SortType.swift */,
 				0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */,
 				0D3D0294235542FB00C46ECE /* IntervalEdge.swift */,
 				0D3D0295235542FB00C46ECE /* PeriodRelation.swift */,
@@ -392,9 +395,10 @@
 				0D3D02BD2355442000C46ECE /* PeriodRelation.swift in Sources */,
 				0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */,
 				0D3D02B22355441200C46ECE /* TimePeriodReverseComparer.swift in Sources */,
+				0D33E6502356464300D1A239 /* SortType.swift in Sources */,
 				0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */,
 				0D3D02B12355441200C46ECE /* TimePeriodEndComparer.swift in Sources */,
-				0D3D02B92355442000C46ECE /* ListSortDirection.swift in Sources */,
+				0D3D02B92355442000C46ECE /* SortDirection.swift in Sources */,
 				0D3D02B52355441200C46ECE /* TimePeriodDurationComparer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  ListSortDirection.swift
+//  SortDirection.swift
 //  MyDailyRoutine
 //
 //  Created by Marcos Simas on 05/10/19.
@@ -11,7 +11,7 @@ import Foundation
 
 // public enum ListSortDirection {
 //enum ListSortDirection: Int {
-enum ListSortDirection {
+enum SortDirection {
     
 
     // Sorts in ascending order.

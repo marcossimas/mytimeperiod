@@ -6,14 +6,170 @@
 //  Copyright © 2019 Marcos Simas. All rights reserved.
 //
 
-/*
+
 
 import Foundation
 
 
 
+
+
 //public class TimePeriodCollection : ITimePeriodCollection {
 class TimePeriodCollection: TimePeriodCollectionProtocol {
+    
+    
+    
+    /// The earliest beginning date of a `TimePeriod` in the group.
+    /// `nil` if any `TimePeriod` in group has a nil beginning date (indefinite).
+    public internal(set) var start: Date?
+
+    /// The latest end date of a `TimePeriod` in the group.
+    /// `nil` if any `TimePeriod` in group has a nil end date (indefinite).
+    public internal(set) var end: Date?
+    
+    
+    
+    // MARK: - Equatable
+    public static func == (lhs: TimePeriodCollection, rhs: TimePeriodCollection) -> Bool {
+        return TimePeriodCollection.hasSameElements(array1: lhs.periods, rhs.periods)
+    }
+    
+    
+    
+    
+    
+
+    // MARK: - Sequence Protocol
+    public func makeIterator() -> IndexingIterator<[TimePeriodProtocol]> {
+        return periods.makeIterator()
+    }
+
+    public func map<T>(_ transform: (TimePeriodProtocol) throws -> T) rethrows -> [T] {
+        return try periods.map(transform)
+    }
+
+    public func filter(_ isIncluded: (TimePeriodProtocol) throws -> Bool) rethrows -> [TimePeriodProtocol] {
+        return try periods.filter(isIncluded)
+    }
+
+    public func forEach(_ body: (TimePeriodProtocol) throws -> Void) rethrows {
+        return try periods.forEach(body)
+    }
+
+    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, whereSeparator isSeparator: (TimePeriodProtocol) throws -> Bool) rethrows -> [AnySequence<TimePeriodProtocol>] {
+        return try periods.split(maxSplits: maxSplits, omittingEmptySubsequences: omittingEmptySubsequences, whereSeparator: isSeparator).map(AnySequence.init)
+    }
+
+    subscript(index: Int) -> TimePeriodProtocol {
+        get {
+            return periods[index]
+        }
+    }
+
+    internal func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
+        return try periods.reduce(initialResult, nextPartialResult)
+    }
+    
+    
+    
+    
+    // MARK: - Sorting
+    /// Sort elements in place using given method.
+    ///
+    /// - Parameter type: sorting method
+    public func sort(by type: SortType) {
+        switch type {
+        case .duration(let mode):    periods.sort(by: sortFuncDuration(mode))
+        case .start(let mode):        periods.sort(by: sortFunc(byStart: true, type: mode))
+        case .end(let mode):        periods.sort(by: sortFunc(byStart: false, type: mode))
+        case .custom(let f):        periods.sort(by: f)
+        }
+    }
+
+    /// Generate a new `TimePeriodCollection` where items are sorted with specified method.
+    ///
+    /// - Parameters:
+    ///   - type: sorting method
+    /// - Returns: collection ordered by given function
+    public func sorted(by type: SortType) -> TimePeriodCollection {
+        var sortedList: [TimePeriodProtocol]!
+        switch type {
+        case .duration(let mode):    sortedList = periods.sorted(by: sortFuncDuration(mode))
+        case .start(let mode):        sortedList = periods.sorted(by: sortFunc(byStart: true, type: mode))
+        case .end(let mode):        sortedList = periods.sorted(by: sortFunc(byStart: false, type: mode))
+        case .custom(let f):        sortedList = periods.sorted(by: f)
+        }
+        return TimePeriodCollection(timePeriods: sortedList)
+    }
+    
+    
+    
+    
+    
+    
+    // MARK: - Helpers
+    private func sortFuncDuration(_ type: SortDirection) -> ((TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
+        switch type {
+        case .ascending:     return { $0.duration < $1.duration }
+        case .descending:     return { $0.duration > $1.duration }
+        }
+    }
+
+    private func sortFunc(byStart start: Bool = true, type: SortDirection) -> ((TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
+        return {
+            let date0 = (start ? $0.start : $0.end)
+            let date1 = (start ? $1.start : $1.end)
+            if date0 == nil && date1 == nil {
+                return false
+            } else if date0 == nil {
+                return true
+            } else if date1 == nil {
+                return false
+            } else {
+                return (type == .ascending ? date1! > date0! : date0! > date1!)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    // MARK: - Internal Helper Functions
+    internal static func hasSameElements(array1: [TimePeriodProtocol], _ array2: [TimePeriodProtocol]) -> Bool {
+        guard array1.count == array2.count else {
+            return false // No need to sorting if they already have different counts
+        }
+
+        let compArray1: [TimePeriodProtocol] = array1.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
+            if period1.start == nil && period2.start == nil {
+                return false
+            } else if period1.start == nil {
+                return true
+            } else if period2.start == nil {
+                return false
+            } else {
+                return period2.start! < period1.start!
+            }
+        }
+        let compArray2: [TimePeriodProtocol] = array2.sorted { (period1: TimePeriodProtocol, period2: TimePeriodProtocol) -> Bool in
+            if period1.start == nil && period2.start == nil {
+                return false
+            } else if period1.start == nil {
+                return true
+            } else if period2.start == nil {
+                return false
+            } else {
+                return period2.start! < period1.start!
+            }
+        }
+        for x in 0..<compArray1.count {
+            if !compArray1[x].equals(compArray2[x]) {
+                return false
+            }
+        }
+        return true
+    }
     
     
     
@@ -101,7 +257,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+/*
 
     // ----------------------------------------------------------------------
     /*public ITimePeriod this[ int index ]
@@ -118,6 +274,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     }
     
+    
+*/
     
     
     
@@ -200,7 +358,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+/*
     var start: Date {
         
         get
@@ -225,7 +383,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+*/
     
     
     
@@ -273,7 +431,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+/*
     
     var end: Date {
         
@@ -295,7 +453,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+*/
     
     
     
@@ -411,7 +569,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
             
         }
         
-        return provider!.getDuration(start: start, end: end)
+        return provider!.getDuration(start: start!, end: end!)
         
     } // GetDuration
     
@@ -572,7 +730,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         
         for timePeriod in periods {
         
-            let localStart: Date = timePeriod.start.addingTimeInterval(delta)
+            let localStart: Date = timePeriod.start!.addingTimeInterval(delta)
             timePeriod.setup(newStart: localStart, newEnd: localStart.addingTimeInterval(timePeriod.duration))
             
         }
@@ -598,7 +756,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         periods.Sort( comparer );
     } // SortBy*/
     
-    
+/*
     
     func sortBy(comparer: TimePeriodComparerProtocol?) -> () {
         
@@ -607,13 +765,13 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         {
             //throw new ArgumentNullException( "comparer" );
         }
-        periods.sort(comparer)
+        periods.sort(by: comparer)
         
     }
     
     
     
-    
+*/
     
     
     
@@ -631,7 +789,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     } // SortReverseBy*/
     
     
-    
+/*
     
     func sortReverseBy(comparer: TimePeriodComparerProtocol?) -> () {
         
@@ -645,7 +803,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     }
     
     
-    
+*/
     
     
     
@@ -673,7 +831,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+/*
     
     func sortByStart(sortDirection: ListSortDirection = ListSortDirection.ascending) -> () {
         
@@ -698,7 +856,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+*/
     
     
     
@@ -723,7 +881,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+/*
     
     func sortByEnd(sortDirection: ListSortDirection = ListSortDirection.ascending) -> () {
         
@@ -747,7 +905,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+ */
     
     
     
@@ -772,7 +930,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+/*
     
     func sortByDuration(sortDirection: ListSortDirection = ListSortDirection.ascending) -> () {
         
@@ -796,7 +954,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    
+ */
     
     
     
@@ -878,14 +1036,14 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    func insidePeriods(test: TimePeriodProtocol?) -> TimePeriodCollectionProtocol {
+    func insidePeriods(test: TimePeriodProtocol?) -> TimePeriodCollection {
         
         if (test == nil)
         {
             //throw new ArgumentNullException( "test" );
         }
 
-        let insidePeriods: TimePeriodCollection = TimePeriodCollection()
+        let insidePeriods = TimePeriodCollection()
 
         for period in periods {
         
@@ -941,6 +1099,10 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
         return hasOverlaps
     } // HasOverlaps
+    
+    
+    
+    
     
     
     
@@ -1063,7 +1225,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    func overlapPeriods(test: TimePeriodProtocol?) -> TimePeriodCollectionProtocol {
+    func overlapPeriods(test: TimePeriodProtocol?) -> TimePeriodCollection {
     
         if (test == nil)
         {
@@ -1082,6 +1244,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
         return overlapPeriods
     } // OverlapPeriods
+    
+    
     
     
     
@@ -1118,7 +1282,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
             }
         }
 
-    return false
+        return false
+        
     } // HasIntersectionPeriods
     
     
@@ -1148,7 +1313,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         
         
         
-    func intersectionPeriods(test: Date) -> TimePeriodCollectionProtocol {
+    func intersectionPeriods(test: Date) -> TimePeriodCollection {
 
         let intersectionPeriods: TimePeriodCollection = TimePeriodCollection()
 
@@ -1162,6 +1327,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
     return intersectionPeriods
     } // IntersectionPeriods
+    
+    
     
     
     
@@ -1248,7 +1415,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         
         
         
-    func intersectionPeriods(test: TimePeriodProtocol?) -> TimePeriodCollectionProtocol {
+    func intersectionPeriods(test: TimePeriodProtocol?) -> TimePeriodCollection {
     
         if (test == nil)
         {
@@ -1267,6 +1434,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
         return intersectionPeriods
     } // IntersectionPeriods
+    
     
     
     
@@ -1302,7 +1470,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         
         
     
-    func relationPeriods(test: TimePeriodProtocol?, relation: PeriodRelation) -> TimePeriodCollectionProtocol {
+    func relationPeriods(test: TimePeriodProtocol?, relation: PeriodRelation) -> TimePeriodCollection {
     
         if (test == nil)
         {
@@ -1570,7 +1738,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         
     func copyTo(array: [TimePeriodProtocol?] , arrayIndex: Int) -> () {
     
-        if (array == nil)
+        if (array.count == 0)
         {
             //throw new ArgumentNullException( "array" );
         }
@@ -1629,7 +1797,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         {
             //throw new ArgumentNullException( "item" );
         }
-        return periods.remove(item)
+        return periods.remove(at: item)
     } // Remove
     
     
@@ -2158,9 +2326,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
         for timePeriod in periods {
         
-            if (timePeriod.start < start)
+            if (timePeriod.start! < start)
             {
-                start = timePeriod.start
+                start = timePeriod.start!
             }
         }
 
@@ -2210,9 +2378,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
         for timePeriod in periods {
         
-            if (timePeriod.end > end)
+            if (timePeriod.end! > end)
             {
-                end = timePeriod.end
+                end = timePeriod.end!
             }
         }
 
@@ -2273,11 +2441,11 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
 
         for timePeriod in periods {
         
-            if (timePeriod.start < start!)
+            if (timePeriod.start! < start!)
             {
                 start = timePeriod.start
             }
-            if (timePeriod.end > end!)
+            if (timePeriod.end! > end!)
             {
                 end = timePeriod.end
             }
@@ -2339,4 +2507,4 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
  
  
  
- */
+ 

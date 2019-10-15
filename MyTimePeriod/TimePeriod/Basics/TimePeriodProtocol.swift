@@ -20,7 +20,7 @@ protocol TimePeriodProtocol {
 
     // ----------------------------------------------------------------------
     //DateTime Start { get; }
-    var start: Date { get }
+    var start: Date? { get }
 
     // ----------------------------------------------------------------------
     //bool HasEnd { get; }
@@ -28,7 +28,7 @@ protocol TimePeriodProtocol {
 
     // ----------------------------------------------------------------------
     //DateTime End { get; }
-    var end: Date { get }
+    var end: Date? { get }
 
     // ----------------------------------------------------------------------
     //TimeSpan Duration { get; }
@@ -95,3 +95,28 @@ protocol TimePeriodProtocol {
     
 
 } // TimePeriodProtocol
+
+
+extension TimePeriodProtocol {
+    
+    
+    
+    /// Return `true` if time period has both start and end dates
+    var hasFiniteRange: Bool {
+        guard start != nil && end != nil else { return false }
+        return true
+    }
+    
+    
+    
+    
+    /// Check if receiver is equal to given period (both start/end groups are equals)
+    ///
+    /// - Parameter period: period to compare against to.
+    /// - Returns: true if are equals
+    func equals(_ period: TimePeriodProtocol) -> Bool {
+        return (start == period.start && end == period.end)
+    }
+    
+    
+}
