@@ -19,6 +19,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
+    
     /// The earliest beginning date of a `TimePeriod` in the group.
     /// `nil` if any `TimePeriod` in group has a nil beginning date (indefinite).
     public internal(set) var start: Date?

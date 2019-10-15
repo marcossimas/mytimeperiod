@@ -23,4 +23,5 @@ enum SortType {
     case custom(_: ((TimePeriodProtocol, TimePeriodProtocol) -> Bool))
     
     
+    
 } // SortType

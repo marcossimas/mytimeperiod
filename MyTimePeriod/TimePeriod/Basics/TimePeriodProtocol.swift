@@ -13,7 +13,6 @@ import Foundation
 protocol TimePeriodProtocol {
     
 
-
     // ----------------------------------------------------------------------
     //bool HasStart { get; }
     var hasStart: Bool { get }

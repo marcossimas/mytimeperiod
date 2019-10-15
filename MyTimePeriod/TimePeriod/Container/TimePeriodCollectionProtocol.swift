@@ -11,6 +11,7 @@ import Foundation
 
 // public interface ITimePeriodCollection : ITimePeriodContainer
 protocol TimePeriodCollectionProtocol: TimePeriodContainerProtocol {
+    
 
     // ----------------------------------------------------------------------
     //new DateTime Start { get; set; }

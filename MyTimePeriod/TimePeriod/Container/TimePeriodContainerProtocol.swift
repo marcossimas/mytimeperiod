@@ -13,6 +13,7 @@ import Foundation
 protocol TimePeriodContainerProtocol: Sequence, Equatable, TimePeriodProtocol {
     
     
+    
     // ----------------------------------------------------------------------
     //new bool IsReadOnly { get; }
     var isReadOnly: Bool { get }
