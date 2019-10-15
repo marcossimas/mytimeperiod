@@ -1,7 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:/Users/marcossimas/iosprojects/MyTimePeriod/MyTimePeriod/Controllers"
+      name = "Controllers">
+      <FileRef
+         location = "group:TimelineViewController.swift">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:/Users/marcossimas/iosprojects/MyTimePeriod/MyTimePeriod/TimePeriod"
+      name = "TimePeriod">
+      <Group
+         location = "group:Basics"
+         name = "Basics">
+         <FileRef
+            location = "group:TimeIntervalProtocol.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodProtocol.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimeBlockProtocol.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimeBlock.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimeRangeProtocol.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimeRange.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:ListSortDirection.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TimePeriodCalc.swift">
+      </FileRef>
+      <FileRef
+         location = "group:IntervalEdge.swift">
+      </FileRef>
+      <FileRef
+         location = "group:PeriodRelation.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TimeSpec.swift">
+      </FileRef>
+      <Group
+         location = "group:Container"
+         name = "Container">
+         <FileRef
+            location = "group:TimePeriodContainerProtocol.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodCollection.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodCollectionProtocol.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Comparer"
+         name = "Comparer">
+         <FileRef
+            location = "group:TimePeriodReverseComparer.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodStartComparer.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodEndComparer.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodComparerProtocol.swift">
+         </FileRef>
+         <FileRef
+            location = "group:TimePeriodDurationComparer.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:DurationFormatType.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DurationProvider.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DurationProviderProtocol.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TimePeriodMapperProtocol.swift">
+      </FileRef>
+   </Group>
    <FileRef
-      location = "self:MyTimePeriod.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -7,35 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */; };
+		0D3D02A9235543CE00C46ECE /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0290235542FB00C46ECE /* TimeRange.swift */; };
+		0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */; };
+		0D3D02AB235543E500C46ECE /* TimeRangeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028F235542FB00C46ECE /* TimeRangeProtocol.swift */; };
+		0D3D02AC235543E600C46ECE /* TimeBlockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028D235542FB00C46ECE /* TimeBlockProtocol.swift */; };
+		0D3D02AD235543E900C46ECE /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028E235542FB00C46ECE /* TimeBlock.swift */; };
+		0D3D02AE2355440000C46ECE /* TimePeriodCollectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0299235542FB00C46ECE /* TimePeriodCollectionProtocol.swift */; };
+		0D3D02AF2355440000C46ECE /* TimePeriodContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0297235542FB00C46ECE /* TimePeriodContainerProtocol.swift */; };
+		0D3D02B02355440000C46ECE /* TimePeriodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0298235542FB00C46ECE /* TimePeriodCollection.swift */; };
+		0D3D02B12355441200C46ECE /* TimePeriodEndComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D029D235542FB00C46ECE /* TimePeriodEndComparer.swift */; };
+		0D3D02B22355441200C46ECE /* TimePeriodReverseComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D029B235542FB00C46ECE /* TimePeriodReverseComparer.swift */; };
+		0D3D02B32355441200C46ECE /* TimePeriodStartComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D029C235542FB00C46ECE /* TimePeriodStartComparer.swift */; };
+		0D3D02B42355441200C46ECE /* TimePeriodComparerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D029E235542FB00C46ECE /* TimePeriodComparerProtocol.swift */; };
+		0D3D02B52355441200C46ECE /* TimePeriodDurationComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D029F235542FB00C46ECE /* TimePeriodDurationComparer.swift */; };
+		0D3D02B62355442000C46ECE /* TimePeriodCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */; };
+		0D3D02B72355442000C46ECE /* IntervalEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0294235542FB00C46ECE /* IntervalEdge.swift */; };
+		0D3D02B82355442000C46ECE /* DurationProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */; };
+		0D3D02B92355442000C46ECE /* ListSortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0292235542FB00C46ECE /* ListSortDirection.swift */; };
+		0D3D02BA2355442000C46ECE /* TimePeriodMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */; };
+		0D3D02BB2355442000C46ECE /* DurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A2235542FB00C46ECE /* DurationProvider.swift */; };
+		0D3D02BC2355442000C46ECE /* TimeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0296235542FB00C46ECE /* TimeSpec.swift */; };
+		0D3D02BD2355442000C46ECE /* PeriodRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0295235542FB00C46ECE /* PeriodRelation.swift */; };
+		0D3D02BE2355442000C46ECE /* DurationFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */; };
 		0D4F4D2423552ED900D7D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4D2323552ED900D7D01D /* Assets.xcassets */; };
 		0D4F4D2723552ED900D7D01D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4D2623552ED900D7D01D /* Preview Assets.xcassets */; };
 		0D4F4D2A23552ED900D7D01D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4D2823552ED900D7D01D /* LaunchScreen.storyboard */; };
 		0D4F4D3523552ED900D7D01D /* MyTimePeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D3423552ED900D7D01D /* MyTimePeriodTests.swift */; };
 		0D4F4D4023552ED900D7D01D /* MyTimePeriodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D3F23552ED900D7D01D /* MyTimePeriodUITests.swift */; };
-		0D4F4D6C23552F2200D7D01D /* TimeIntervalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D4F23552F2200D7D01D /* TimeIntervalProtocol.swift */; };
-		0D4F4D6D23552F2200D7D01D /* TimePeriodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5023552F2200D7D01D /* TimePeriodProtocol.swift */; };
-		0D4F4D6E23552F2200D7D01D /* TimeBlockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5123552F2200D7D01D /* TimeBlockProtocol.swift */; };
-		0D4F4D6F23552F2200D7D01D /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5223552F2200D7D01D /* TimeBlock.swift */; };
-		0D4F4D7123552F2200D7D01D /* TimeRangeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5423552F2200D7D01D /* TimeRangeProtocol.swift */; };
-		0D4F4D7223552F2200D7D01D /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5523552F2200D7D01D /* TimeRange.swift */; };
-		0D4F4D7323552F2200D7D01D /* ListSortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5623552F2200D7D01D /* ListSortDirection.swift */; };
-		0D4F4D7423552F2200D7D01D /* TimePeriodCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5723552F2200D7D01D /* TimePeriodCalc.swift */; };
-		0D4F4D7523552F2200D7D01D /* IntervalEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5823552F2200D7D01D /* IntervalEdge.swift */; };
-		0D4F4D7623552F2200D7D01D /* PeriodRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5923552F2200D7D01D /* PeriodRelation.swift */; };
-		0D4F4D7723552F2200D7D01D /* TimeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5A23552F2200D7D01D /* TimeSpec.swift */; };
-		0D4F4D7823552F2200D7D01D /* TimePeriodContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5C23552F2200D7D01D /* TimePeriodContainerProtocol.swift */; };
-		0D4F4D7923552F2200D7D01D /* TimePeriodCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5D23552F2200D7D01D /* TimePeriodCollection.swift */; };
-		0D4F4D7A23552F2200D7D01D /* TimePeriodCollectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D5E23552F2200D7D01D /* TimePeriodCollectionProtocol.swift */; };
-		0D4F4D7B23552F2200D7D01D /* TimePeriodReverseComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6023552F2200D7D01D /* TimePeriodReverseComparer.swift */; };
-		0D4F4D7C23552F2200D7D01D /* TimePeriodStartComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6123552F2200D7D01D /* TimePeriodStartComparer.swift */; };
-		0D4F4D7D23552F2200D7D01D /* TimePeriodEndComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6223552F2200D7D01D /* TimePeriodEndComparer.swift */; };
-		0D4F4D7E23552F2200D7D01D /* TimePeriodComparerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6323552F2200D7D01D /* TimePeriodComparerProtocol.swift */; };
-		0D4F4D7F23552F2200D7D01D /* TimePeriodDurationComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6423552F2200D7D01D /* TimePeriodDurationComparer.swift */; };
-		0D4F4D8023552F2200D7D01D /* DurationFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6523552F2200D7D01D /* DurationFormatType.swift */; };
-		0D4F4D8123552F2200D7D01D /* DurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6623552F2200D7D01D /* DurationProvider.swift */; };
-		0D4F4D8223552F2200D7D01D /* DurationProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6723552F2200D7D01D /* DurationProviderProtocol.swift */; };
-		0D4F4D8323552F2200D7D01D /* TimePeriodMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6823552F2200D7D01D /* TimePeriodMapperProtocol.swift */; };
-		0D4F4D8423552F2200D7D01D /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D6A23552F2200D7D01D /* TimelineViewController.swift */; };
 		0D4F4D8723552FC900D7D01D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4D8623552FC900D7D01D /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +56,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodProtocol.swift; sourceTree = "<group>"; };
+		0D3D028D235542FB00C46ECE /* TimeBlockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockProtocol.swift; sourceTree = "<group>"; };
+		0D3D028E235542FB00C46ECE /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
+		0D3D028F235542FB00C46ECE /* TimeRangeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRangeProtocol.swift; sourceTree = "<group>"; };
+		0D3D0290235542FB00C46ECE /* TimeRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
+		0D3D0292235542FB00C46ECE /* ListSortDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSortDirection.swift; sourceTree = "<group>"; };
+		0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodCalc.swift; sourceTree = "<group>"; };
+		0D3D0294235542FB00C46ECE /* IntervalEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalEdge.swift; sourceTree = "<group>"; };
+		0D3D0295235542FB00C46ECE /* PeriodRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodRelation.swift; sourceTree = "<group>"; };
+		0D3D0296235542FB00C46ECE /* TimeSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSpec.swift; sourceTree = "<group>"; };
+		0D3D0297235542FB00C46ECE /* TimePeriodContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodContainerProtocol.swift; sourceTree = "<group>"; };
+		0D3D0298235542FB00C46ECE /* TimePeriodCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodCollection.swift; sourceTree = "<group>"; };
+		0D3D0299235542FB00C46ECE /* TimePeriodCollectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodCollectionProtocol.swift; sourceTree = "<group>"; };
+		0D3D029B235542FB00C46ECE /* TimePeriodReverseComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodReverseComparer.swift; sourceTree = "<group>"; };
+		0D3D029C235542FB00C46ECE /* TimePeriodStartComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodStartComparer.swift; sourceTree = "<group>"; };
+		0D3D029D235542FB00C46ECE /* TimePeriodEndComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodEndComparer.swift; sourceTree = "<group>"; };
+		0D3D029E235542FB00C46ECE /* TimePeriodComparerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodComparerProtocol.swift; sourceTree = "<group>"; };
+		0D3D029F235542FB00C46ECE /* TimePeriodDurationComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodDurationComparer.swift; sourceTree = "<group>"; };
+		0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatType.swift; sourceTree = "<group>"; };
+		0D3D02A2235542FB00C46ECE /* DurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationProvider.swift; sourceTree = "<group>"; };
+		0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationProviderProtocol.swift; sourceTree = "<group>"; };
+		0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodMapperProtocol.swift; sourceTree = "<group>"; };
+		0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		0D4F4D1A23552ED500D7D01D /* MyTimePeriod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTimePeriod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4F4D2323552ED900D7D01D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D4F4D2623552ED900D7D01D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -68,30 +90,6 @@
 		0D4F4D3B23552ED900D7D01D /* MyTimePeriodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTimePeriodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4F4D3F23552ED900D7D01D /* MyTimePeriodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimePeriodUITests.swift; sourceTree = "<group>"; };
 		0D4F4D4123552ED900D7D01D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D4F4D4F23552F2200D7D01D /* TimeIntervalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D5023552F2200D7D01D /* TimePeriodProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D5123552F2200D7D01D /* TimeBlockProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlockProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D5223552F2200D7D01D /* TimeBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
-		0D4F4D5423552F2200D7D01D /* TimeRangeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRangeProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D5523552F2200D7D01D /* TimeRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRange.swift; sourceTree = "<group>"; };
-		0D4F4D5623552F2200D7D01D /* ListSortDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSortDirection.swift; sourceTree = "<group>"; };
-		0D4F4D5723552F2200D7D01D /* TimePeriodCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCalc.swift; sourceTree = "<group>"; };
-		0D4F4D5823552F2200D7D01D /* IntervalEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalEdge.swift; sourceTree = "<group>"; };
-		0D4F4D5923552F2200D7D01D /* PeriodRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodRelation.swift; sourceTree = "<group>"; };
-		0D4F4D5A23552F2200D7D01D /* TimeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSpec.swift; sourceTree = "<group>"; };
-		0D4F4D5C23552F2200D7D01D /* TimePeriodContainerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodContainerProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D5D23552F2200D7D01D /* TimePeriodCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCollection.swift; sourceTree = "<group>"; };
-		0D4F4D5E23552F2200D7D01D /* TimePeriodCollectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCollectionProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D6023552F2200D7D01D /* TimePeriodReverseComparer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodReverseComparer.swift; sourceTree = "<group>"; };
-		0D4F4D6123552F2200D7D01D /* TimePeriodStartComparer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodStartComparer.swift; sourceTree = "<group>"; };
-		0D4F4D6223552F2200D7D01D /* TimePeriodEndComparer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodEndComparer.swift; sourceTree = "<group>"; };
-		0D4F4D6323552F2200D7D01D /* TimePeriodComparerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodComparerProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D6423552F2200D7D01D /* TimePeriodDurationComparer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodDurationComparer.swift; sourceTree = "<group>"; };
-		0D4F4D6523552F2200D7D01D /* DurationFormatType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationFormatType.swift; sourceTree = "<group>"; };
-		0D4F4D6623552F2200D7D01D /* DurationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationProvider.swift; sourceTree = "<group>"; };
-		0D4F4D6723552F2200D7D01D /* DurationProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationProviderProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D6823552F2200D7D01D /* TimePeriodMapperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodMapperProtocol.swift; sourceTree = "<group>"; };
-		0D4F4D6A23552F2200D7D01D /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		0D4F4D8623552FC900D7D01D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +118,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D3D0291235542FB00C46ECE /* Basics */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */,
+				0D3D028F235542FB00C46ECE /* TimeRangeProtocol.swift */,
+				0D3D028D235542FB00C46ECE /* TimeBlockProtocol.swift */,
+				0D3D0290235542FB00C46ECE /* TimeRange.swift */,
+				0D3D028E235542FB00C46ECE /* TimeBlock.swift */,
+			);
+			path = Basics;
+			sourceTree = "<group>";
+		};
+		0D3D029A235542FB00C46ECE /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D0297235542FB00C46ECE /* TimePeriodContainerProtocol.swift */,
+				0D3D0299235542FB00C46ECE /* TimePeriodCollectionProtocol.swift */,
+				0D3D0298235542FB00C46ECE /* TimePeriodCollection.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		0D3D02A0235542FB00C46ECE /* Comparer */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D029E235542FB00C46ECE /* TimePeriodComparerProtocol.swift */,
+				0D3D029C235542FB00C46ECE /* TimePeriodStartComparer.swift */,
+				0D3D029F235542FB00C46ECE /* TimePeriodDurationComparer.swift */,
+				0D3D029D235542FB00C46ECE /* TimePeriodEndComparer.swift */,
+				0D3D029B235542FB00C46ECE /* TimePeriodReverseComparer.swift */,
+			);
+			path = Comparer;
+			sourceTree = "<group>";
+		};
+		0D3D02A5235542FB00C46ECE /* TimePeriod */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D0291235542FB00C46ECE /* Basics */,
+				0D3D029A235542FB00C46ECE /* Container */,
+				0D3D02A0235542FB00C46ECE /* Comparer */,
+				0D3D0292235542FB00C46ECE /* ListSortDirection.swift */,
+				0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */,
+				0D3D0294235542FB00C46ECE /* IntervalEdge.swift */,
+				0D3D0295235542FB00C46ECE /* PeriodRelation.swift */,
+				0D3D0296235542FB00C46ECE /* TimeSpec.swift */,
+				0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */,
+				0D3D02A2235542FB00C46ECE /* DurationProvider.swift */,
+				0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */,
+				0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */,
+			);
+			name = TimePeriod;
+			path = /Users/marcossimas/iosprojects/MyTimePeriod/MyTimePeriod/TimePeriod;
+			sourceTree = "<absolute>";
+		};
+		0D3D02A7235542FD00C46ECE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */,
+			);
+			name = Controllers;
+			path = /Users/marcossimas/iosprojects/MyTimePeriod/MyTimePeriod/Controllers;
+			sourceTree = "<absolute>";
+		};
 		0D4F4D1123552ED500D7D01D = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +204,8 @@
 		0D4F4D1C23552ED500D7D01D /* MyTimePeriod */ = {
 			isa = PBXGroup;
 			children = (
-				0D4F4D6923552F2200D7D01D /* Controllers */,
-				0D4F4D4D23552F2200D7D01D /* TimePeriod */,
+				0D3D02A7235542FD00C46ECE /* Controllers */,
+				0D3D02A5235542FB00C46ECE /* TimePeriod */,
 				0D4F4D8623552FC900D7D01D /* AppDelegate.swift */,
 				0D4F4D2323552ED900D7D01D /* Assets.xcassets */,
 				0D4F4D2823552ED900D7D01D /* LaunchScreen.storyboard */,
@@ -178,70 +239,6 @@
 				0D4F4D4123552ED900D7D01D /* Info.plist */,
 			);
 			path = MyTimePeriodUITests;
-			sourceTree = "<group>";
-		};
-		0D4F4D4D23552F2200D7D01D /* TimePeriod */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F4D4E23552F2200D7D01D /* Basics */,
-				0D4F4D5B23552F2200D7D01D /* Container */,
-				0D4F4D5F23552F2200D7D01D /* Comparer */,
-				0D4F4D5623552F2200D7D01D /* ListSortDirection.swift */,
-				0D4F4D5723552F2200D7D01D /* TimePeriodCalc.swift */,
-				0D4F4D5823552F2200D7D01D /* IntervalEdge.swift */,
-				0D4F4D5923552F2200D7D01D /* PeriodRelation.swift */,
-				0D4F4D5A23552F2200D7D01D /* TimeSpec.swift */,
-				0D4F4D6523552F2200D7D01D /* DurationFormatType.swift */,
-				0D4F4D6623552F2200D7D01D /* DurationProvider.swift */,
-				0D4F4D6723552F2200D7D01D /* DurationProviderProtocol.swift */,
-				0D4F4D6823552F2200D7D01D /* TimePeriodMapperProtocol.swift */,
-			);
-			name = TimePeriod;
-			path = ../../../Desktop/MyDailyRoutine/MyDailyRoutine/TimePeriod;
-			sourceTree = "<group>";
-		};
-		0D4F4D4E23552F2200D7D01D /* Basics */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F4D5023552F2200D7D01D /* TimePeriodProtocol.swift */,
-				0D4F4D5123552F2200D7D01D /* TimeBlockProtocol.swift */,
-				0D4F4D4F23552F2200D7D01D /* TimeIntervalProtocol.swift */,
-				0D4F4D5423552F2200D7D01D /* TimeRangeProtocol.swift */,
-				0D4F4D5523552F2200D7D01D /* TimeRange.swift */,
-				0D4F4D5223552F2200D7D01D /* TimeBlock.swift */,
-			);
-			path = Basics;
-			sourceTree = "<group>";
-		};
-		0D4F4D5B23552F2200D7D01D /* Container */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F4D5C23552F2200D7D01D /* TimePeriodContainerProtocol.swift */,
-				0D4F4D5E23552F2200D7D01D /* TimePeriodCollectionProtocol.swift */,
-				0D4F4D5D23552F2200D7D01D /* TimePeriodCollection.swift */,
-			);
-			path = Container;
-			sourceTree = "<group>";
-		};
-		0D4F4D5F23552F2200D7D01D /* Comparer */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F4D6323552F2200D7D01D /* TimePeriodComparerProtocol.swift */,
-				0D4F4D6123552F2200D7D01D /* TimePeriodStartComparer.swift */,
-				0D4F4D6223552F2200D7D01D /* TimePeriodEndComparer.swift */,
-				0D4F4D6423552F2200D7D01D /* TimePeriodDurationComparer.swift */,
-				0D4F4D6023552F2200D7D01D /* TimePeriodReverseComparer.swift */,
-			);
-			path = Comparer;
-			sourceTree = "<group>";
-		};
-		0D4F4D6923552F2200D7D01D /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0D4F4D6A23552F2200D7D01D /* TimelineViewController.swift */,
-			);
-			name = Controllers;
-			path = ../../../Desktop/MyDailyRoutine/MyDailyRoutine/Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,31 +372,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D4F4D7523552F2200D7D01D /* IntervalEdge.swift in Sources */,
-				0D4F4D7423552F2200D7D01D /* TimePeriodCalc.swift in Sources */,
-				0D4F4D7F23552F2200D7D01D /* TimePeriodDurationComparer.swift in Sources */,
-				0D4F4D7123552F2200D7D01D /* TimeRangeProtocol.swift in Sources */,
-				0D4F4D6E23552F2200D7D01D /* TimeBlockProtocol.swift in Sources */,
-				0D4F4D7323552F2200D7D01D /* ListSortDirection.swift in Sources */,
-				0D4F4D7223552F2200D7D01D /* TimeRange.swift in Sources */,
+				0D3D02AC235543E600C46ECE /* TimeBlockProtocol.swift in Sources */,
+				0D3D02BC2355442000C46ECE /* TimeSpec.swift in Sources */,
+				0D3D02B02355440000C46ECE /* TimePeriodCollection.swift in Sources */,
+				0D3D02BA2355442000C46ECE /* TimePeriodMapperProtocol.swift in Sources */,
+				0D3D02B42355441200C46ECE /* TimePeriodComparerProtocol.swift in Sources */,
+				0D3D02BB2355442000C46ECE /* DurationProvider.swift in Sources */,
+				0D3D02B72355442000C46ECE /* IntervalEdge.swift in Sources */,
+				0D3D02B82355442000C46ECE /* DurationProviderProtocol.swift in Sources */,
+				0D3D02AE2355440000C46ECE /* TimePeriodCollectionProtocol.swift in Sources */,
+				0D3D02B62355442000C46ECE /* TimePeriodCalc.swift in Sources */,
+				0D3D02AF2355440000C46ECE /* TimePeriodContainerProtocol.swift in Sources */,
+				0D3D02A9235543CE00C46ECE /* TimeRange.swift in Sources */,
+				0D3D02BE2355442000C46ECE /* DurationFormatType.swift in Sources */,
+				0D3D02AD235543E900C46ECE /* TimeBlock.swift in Sources */,
 				0D4F4D8723552FC900D7D01D /* AppDelegate.swift in Sources */,
-				0D4F4D7923552F2200D7D01D /* TimePeriodCollection.swift in Sources */,
-				0D4F4D7A23552F2200D7D01D /* TimePeriodCollectionProtocol.swift in Sources */,
-				0D4F4D8323552F2200D7D01D /* TimePeriodMapperProtocol.swift in Sources */,
-				0D4F4D7623552F2200D7D01D /* PeriodRelation.swift in Sources */,
-				0D4F4D7C23552F2200D7D01D /* TimePeriodStartComparer.swift in Sources */,
-				0D4F4D8023552F2200D7D01D /* DurationFormatType.swift in Sources */,
-				0D4F4D7823552F2200D7D01D /* TimePeriodContainerProtocol.swift in Sources */,
-				0D4F4D7D23552F2200D7D01D /* TimePeriodEndComparer.swift in Sources */,
-				0D4F4D7E23552F2200D7D01D /* TimePeriodComparerProtocol.swift in Sources */,
-				0D4F4D7723552F2200D7D01D /* TimeSpec.swift in Sources */,
-				0D4F4D8123552F2200D7D01D /* DurationProvider.swift in Sources */,
-				0D4F4D6F23552F2200D7D01D /* TimeBlock.swift in Sources */,
-				0D4F4D7B23552F2200D7D01D /* TimePeriodReverseComparer.swift in Sources */,
-				0D4F4D8223552F2200D7D01D /* DurationProviderProtocol.swift in Sources */,
-				0D4F4D8423552F2200D7D01D /* TimelineViewController.swift in Sources */,
-				0D4F4D6D23552F2200D7D01D /* TimePeriodProtocol.swift in Sources */,
-				0D4F4D6C23552F2200D7D01D /* TimeIntervalProtocol.swift in Sources */,
+				0D3D02B32355441200C46ECE /* TimePeriodStartComparer.swift in Sources */,
+				0D3D02AB235543E500C46ECE /* TimeRangeProtocol.swift in Sources */,
+				0D3D02BD2355442000C46ECE /* PeriodRelation.swift in Sources */,
+				0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */,
+				0D3D02B22355441200C46ECE /* TimePeriodReverseComparer.swift in Sources */,
+				0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */,
+				0D3D02B12355441200C46ECE /* TimePeriodEndComparer.swift in Sources */,
+				0D3D02B92355442000C46ECE /* ListSortDirection.swift in Sources */,
+				0D3D02B52355441200C46ECE /* TimePeriodDurationComparer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
