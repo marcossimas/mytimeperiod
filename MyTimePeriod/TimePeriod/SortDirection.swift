@@ -10,14 +10,17 @@ import Foundation
 
 
 // public enum ListSortDirection {
-enum ListSortDirection: Int {
+//enum ListSortDirection: Int {
+enum ListSortDirection {
     
 
     // Sorts in ascending order.
-    case ascending = 0
+    //case ascending = 0
+    case ascending
     
     // Sorts in descending order.
-    case descending = 1
+    //case descending = 1
+    case descending
     
     
 } // ListSortDirection
