@@ -2505,7 +2505,3 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
 
 } // class TimePeriodCollection
- 
- 
- 
- 
