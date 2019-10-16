@@ -14,15 +14,16 @@ import Foundation
 class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     
+    
     // members
     //private readonly List<ITimeLineMoment> timeLineMoments = new List<ITimeLineMoment>();
     //var timeLineMoments: [TimelineMomentProtocol] = [TimelineMomentProtocol]()
-    var timeLineMoments: [TimelineMomentProtocol] = []
+    var timeLineMoments: [TimelineMoment] = []
     
     
     //private readonly Dictionary<DateTime, ITimeLineMoment> timeLineMomentLookup = new Dictionary<DateTime, ITimeLineMoment>();
     //var timeLineMomentLookup: [Date: TimelineMomentProtocol] = [Date: TimelineMomentProtocol]()
-    var timeLineMomentLookup: [Date: TimelineMomentProtocol] = [:]
+    var timeLineMomentLookup: [Date: TimelineMoment] = [:]
     
     
     
@@ -358,9 +359,9 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     
     
-    func find(moment: Date) -> TimelineMomentProtocol {
+    func find(moment: Date) -> TimelineMoment {
     
-        var timeLineMoment: TimelineMomentProtocol? = nil
+        var timeLineMoment: TimelineMoment? = nil
         
         if (count > 0)
         {
@@ -547,7 +548,7 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     } // GetEnumerator*/
     
     
-    func getEnumerator() -> IndexingIterator<[TimelineMomentProtocol]> {
+    func getEnumerator() -> IndexingIterator<[TimelineMoment]> {
         
         return timeLineMoments.makeIterator()
     }
@@ -588,7 +589,7 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     func addStart(moment: Date) -> () {
     
-        var timeLineMoment: TimelineMomentProtocol? = find(moment: moment)
+        var timeLineMoment: TimelineMoment? = find(moment: moment)
         if (timeLineMoment == nil)
         {
             timeLineMoment = TimelineMoment(moment: moment)
@@ -624,7 +625,7 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     func addEnd(moment: Date) -> () {
     
-        var timeLineMoment: TimelineMomentProtocol? = find(moment: moment)
+        var timeLineMoment: TimelineMoment? = find(moment: moment)
         
         if (timeLineMoment == nil)
         {
@@ -665,7 +666,7 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     func removeStart(moment: Date) -> () {
     
-        var timeLineMoment: TimelineMomentProtocol? = find(moment: moment)
+        let timeLineMoment: TimelineMoment? = find(moment: moment)
         
         if (timeLineMoment == nil)
         {
@@ -676,8 +677,8 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
         
         if (timeLineMoment!.isEmpty)
         {
-            timeLineMoments.firstIndex(of: timeLineMoment)
-            //timeLineMoments.remove(timeLineMoment)
+            let index: Int = timeLineMoments.firstIndex(of: timeLineMoment!)!
+            timeLineMoments.remove(at: index)
             timeLineMomentLookup.removeValue(forKey: moment)
         }
     } // RemoveStart
@@ -710,7 +711,7 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     func removeEnd(moment: Date) -> () {
     
-        var timeLineMoment: TimelineMomentProtocol? = find(moment: moment)
+        let timeLineMoment: TimelineMoment? = find(moment: moment)
         if (timeLineMoment == nil)
         {
             //throw new InvalidOperationException();
@@ -720,7 +721,8 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
         
         if (timeLineMoment!.isEmpty)
         {
-            timeLineMoments.remove(timeLineMoment)
+            let index: Int = timeLineMoments.firstIndex(of: timeLineMoment!)!
+            timeLineMoments.remove(at: index)
             timeLineMomentLookup.removeValue(forKey: moment)
         }
     } // RemoveEnd
@@ -741,23 +743,15 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     
     
-    func sort() -> () {
-    
-        timeLineMoments.sort((left, right) => left.moment.CompareTo(right.Moment))
-        
-    } // Sort
-    
-    
-    
-    
+    // MARK: - Sorting
+    /// Sort elements in place using given method.
+    ///
+    /// - Parameter type: sorting method
+    public func sort() {
 
+        timeLineMoments.sort(by: { $1.moment > $0.moment} )
+    }
     
-    
-    
-    
-    
-    
-
     
     
     

@@ -180,7 +180,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     // ----------------------------------------------------------------------
     // members
     //private readonly List<ITimePeriod> periods = new List<ITimePeriod>();
-    var periods: [TimePeriodProtocol] = [TimePeriodProtocol]()
+    var periods: [TimePeriodProtocol] = []
     
     
     

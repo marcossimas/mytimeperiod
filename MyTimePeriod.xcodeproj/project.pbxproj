@@ -12,6 +12,8 @@
 		0D33E6542356542600D1A239 /* TimelineMomentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6532356542600D1A239 /* TimelineMomentProtocol.swift */; };
 		0D33E657235659DD00D1A239 /* TimeLineMomentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E656235659DD00D1A239 /* TimeLineMomentCollection.swift */; };
 		0D33E6592356675D00D1A239 /* TimelineMoment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6582356675D00D1A239 /* TimelineMoment.swift */; };
+		0D33E65C2356AA6800D1A239 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E65A2356AA6800D1A239 /* Timeline.swift */; };
+		0D33E65D2356AA6800D1A239 /* TimelineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E65B2356AA6800D1A239 /* TimelineProtocol.swift */; };
 		0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */; };
 		0D3D02A9235543CE00C46ECE /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0290235542FB00C46ECE /* TimeRange.swift */; };
 		0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */; };
@@ -66,6 +68,8 @@
 		0D33E6532356542600D1A239 /* TimelineMomentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimelineMomentProtocol.swift; path = ../TimelineMomentProtocol.swift; sourceTree = "<group>"; };
 		0D33E656235659DD00D1A239 /* TimeLineMomentCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineMomentCollection.swift; sourceTree = "<group>"; };
 		0D33E6582356675D00D1A239 /* TimelineMoment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineMoment.swift; sourceTree = "<group>"; };
+		0D33E65A2356AA6800D1A239 /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = ../Timeline.swift; sourceTree = "<group>"; };
+		0D33E65B2356AA6800D1A239 /* TimelineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineProtocol.swift; path = ../TimelineProtocol.swift; sourceTree = "<group>"; };
 		0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodProtocol.swift; sourceTree = "<group>"; };
 		0D3D028D235542FB00C46ECE /* TimeBlockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockProtocol.swift; sourceTree = "<group>"; };
 		0D3D028E235542FB00C46ECE /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
@@ -84,10 +88,10 @@
 		0D3D029D235542FB00C46ECE /* TimePeriodEndComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodEndComparer.swift; sourceTree = "<group>"; };
 		0D3D029E235542FB00C46ECE /* TimePeriodComparerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodComparerProtocol.swift; sourceTree = "<group>"; };
 		0D3D029F235542FB00C46ECE /* TimePeriodDurationComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodDurationComparer.swift; sourceTree = "<group>"; };
-		0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatType.swift; sourceTree = "<group>"; };
-		0D3D02A2235542FB00C46ECE /* DurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationProvider.swift; sourceTree = "<group>"; };
-		0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationProviderProtocol.swift; sourceTree = "<group>"; };
-		0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodMapperProtocol.swift; sourceTree = "<group>"; };
+		0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DurationFormatType.swift; path = ../DurationFormatType.swift; sourceTree = "<group>"; };
+		0D3D02A2235542FB00C46ECE /* DurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DurationProvider.swift; path = ../DurationProvider.swift; sourceTree = "<group>"; };
+		0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DurationProviderProtocol.swift; path = ../DurationProviderProtocol.swift; sourceTree = "<group>"; };
+		0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimePeriodMapperProtocol.swift; path = ../TimePeriodMapperProtocol.swift; sourceTree = "<group>"; };
 		0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		0D4F4D1A23552ED500D7D01D /* MyTimePeriod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTimePeriod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4F4D2323552ED900D7D01D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +143,26 @@
 			path = Moment;
 			sourceTree = "<group>";
 		};
+		0D33E65E2356AB2100D1A239 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				0D33E65B2356AA6800D1A239 /* TimelineProtocol.swift */,
+				0D33E65A2356AA6800D1A239 /* Timeline.swift */,
+				0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		0D33E65F2356AD4400D1A239 /* DurationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */,
+				0D3D02A2235542FB00C46ECE /* DurationProvider.swift */,
+				0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */,
+			);
+			path = DurationProvider;
+			sourceTree = "<group>";
+		};
 		0D3D0291235542FB00C46ECE /* Basics */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,16 +204,14 @@
 				0D3D029A235542FB00C46ECE /* Container */,
 				0D3D02A0235542FB00C46ECE /* Comparer */,
 				0D33E6552356598900D1A239 /* Moment */,
+				0D33E65F2356AD4400D1A239 /* DurationProvider */,
+				0D33E65E2356AB2100D1A239 /* Timeline */,
 				0D3D0292235542FB00C46ECE /* SortDirection.swift */,
 				0D33E64F2356464300D1A239 /* SortType.swift */,
 				0D3D0293235542FB00C46ECE /* TimePeriodCalc.swift */,
 				0D3D0294235542FB00C46ECE /* IntervalEdge.swift */,
 				0D3D0295235542FB00C46ECE /* PeriodRelation.swift */,
 				0D3D0296235542FB00C46ECE /* TimeSpec.swift */,
-				0D3D02A1235542FB00C46ECE /* DurationFormatType.swift */,
-				0D3D02A2235542FB00C46ECE /* DurationProvider.swift */,
-				0D3D02A3235542FB00C46ECE /* DurationProviderProtocol.swift */,
-				0D3D02A4235542FB00C46ECE /* TimePeriodMapperProtocol.swift */,
 			);
 			name = TimePeriod;
 			path = /Users/marcossimas/iosprojects/MyTimePeriod/MyTimePeriod/TimePeriod;
@@ -406,6 +428,7 @@
 				0D3D02B72355442000C46ECE /* IntervalEdge.swift in Sources */,
 				0D3D02B82355442000C46ECE /* DurationProviderProtocol.swift in Sources */,
 				0D3D02AE2355440000C46ECE /* TimePeriodCollectionProtocol.swift in Sources */,
+				0D33E65D2356AA6800D1A239 /* TimelineProtocol.swift in Sources */,
 				0D3D02B62355442000C46ECE /* TimePeriodCalc.swift in Sources */,
 				0D33E657235659DD00D1A239 /* TimeLineMomentCollection.swift in Sources */,
 				0D3D02AF2355440000C46ECE /* TimePeriodContainerProtocol.swift in Sources */,
@@ -413,6 +436,7 @@
 				0D3D02BE2355442000C46ECE /* DurationFormatType.swift in Sources */,
 				0D3D02AD235543E900C46ECE /* TimeBlock.swift in Sources */,
 				0D4F4D8723552FC900D7D01D /* AppDelegate.swift in Sources */,
+				0D33E65C2356AA6800D1A239 /* Timeline.swift in Sources */,
 				0D3D02B32355441200C46ECE /* TimePeriodStartComparer.swift in Sources */,
 				0D3D02AB235543E500C46ECE /* TimeRangeProtocol.swift in Sources */,
 				0D3D02BD2355442000C46ECE /* PeriodRelation.swift in Sources */,

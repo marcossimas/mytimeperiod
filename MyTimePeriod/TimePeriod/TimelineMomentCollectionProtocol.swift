@@ -59,7 +59,7 @@ protocol TimelineMomentCollectionProtocol {
 
     // ----------------------------------------------------------------------
     //ITimeLineMoment Find( DateTime moment );
-    func find(moment: Date) -> TimelineMomentProtocol
+    func find(moment: Date) -> TimelineMoment
 
     // ----------------------------------------------------------------------
     //bool Contains( DateTime moment );
