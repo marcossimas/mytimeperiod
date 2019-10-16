@@ -12,8 +12,6 @@ import Foundation
 
 
 
-
-
 //public class TimePeriodCollection : ITimePeriodCollection {
 //class TimePeriodCollection: TimePeriodCollectionProtocol {
 
@@ -113,8 +111,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     // MARK: - Helpers
     private func sortFuncDuration(_ type: SortDirection) -> ((TimePeriodProtocol, TimePeriodProtocol) -> Bool) {
         switch type {
-        case .ascending:     return { $0.duration < $1.duration }
-        case .descending:     return { $0.duration > $1.duration }
+        case .ascending:     return { $0.duration! < $1.duration! }
+        case .descending:     return { $0.duration! > $1.duration! }
         }
     }
 
@@ -1097,7 +1095,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         }
         else if (count > 2)
         {
-            hasOverlaps = TimelineMomentCollection(periods: self).hasOverlaps()
+            hasOverlaps = TimelineMomentCollection(periods: self.periods).hasOverlaps()
         }
 
         return hasOverlaps
@@ -1137,7 +1135,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         var hasGaps: Bool = false
         if (count > 1)
         {
-            hasGaps = TimelineMomentCollection(periods: self).hasGaps()
+            hasGaps = TimelineMomentCollection(periods: self.periods).hasGaps()
         }
 
         return hasGaps
@@ -1682,7 +1680,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         {
             //throw new ArgumentNullException( "item" );
         }
-        return periods.contains(item!)
+        //return periods.contains(item!)
+        return self.containsPeriod(test: item!)
+        
     } // Contains
     
     
@@ -1713,7 +1713,25 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         {
             //throw new ArgumentNullException( "item" );
         }
-        return periods.indexOf(item!)
+        
+        //return periods.indexOf(item!)
+        
+        var elementIndex: Int = 0
+        
+        for period in periods {
+            
+            
+            if period.equals(item!) {
+                
+                return elementIndex
+                
+            }
+            
+            elementIndex += 1
+            
+        }
+        
+        
         
     } // IndexOf
     
@@ -1822,7 +1840,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
     func removeAt(index: Int) -> () {
     
-        periods.removeAt(index)
+        periods.remove(at: index)
         
     } // RemoveAt
     
@@ -2232,7 +2250,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         for i in 0..<count {
         
-            if (!self[i].Equals(comp[i]))
+            if (!self[i].equals(comp[i]))
             {
                 return false
             }

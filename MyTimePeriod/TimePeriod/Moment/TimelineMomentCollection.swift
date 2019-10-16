@@ -138,7 +138,7 @@ class TimelineMomentCollection: TimelineMomentCollectionProtocol {
     
     var max: TimelineMomentProtocol? {
   
-        get { return !isEmpty ? timeLineMoments[count - 1] : nil }
+        get { return !isEmpty ? timelineMoments[count - 1] : nil }
         
     } // Max
     
