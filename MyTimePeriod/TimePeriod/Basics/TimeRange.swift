@@ -16,6 +16,7 @@ class TimeRange: TimeRangeProtocol {
     
     
     
+    
 
     // ----------------------------------------------------------------------
     //public static readonly TimeRange Anytime = new TimeRange( true );
