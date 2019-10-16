@@ -10,7 +10,8 @@ import Foundation
 
 // public interface ITimePeriodContainer : IList<ITimePeriod>, ITimePeriod
 // protocol TimePeriodContainerProtocol: Sequence, TimePeriodProtocol {
-protocol TimePeriodContainerProtocol: Sequence, Equatable, TimePeriodProtocol {
+//protocol TimePeriodContainerProtocol: Sequence, Equatable, TimePeriodProtocol {
+protocol TimePeriodContainerProtocol: TimePeriodProtocol {
     
     
     

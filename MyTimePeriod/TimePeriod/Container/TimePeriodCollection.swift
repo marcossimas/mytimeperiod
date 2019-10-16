@@ -15,7 +15,9 @@ import Foundation
 
 
 //public class TimePeriodCollection : ITimePeriodCollection {
-class TimePeriodCollection: TimePeriodCollectionProtocol {
+//class TimePeriodCollection: TimePeriodCollectionProtocol {
+
+class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
@@ -473,7 +475,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
     
     
     
-    var duration: TimeInterval {
+    var duration: TimeInterval? {
         
         get
         {
@@ -511,7 +513,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
             
             for timePeriod in periods {
                 
-                localDuration = localDuration + timePeriod.duration
+                localDuration = localDuration + timePeriod.duration!
                 
             }
             
@@ -732,7 +734,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         for timePeriod in periods {
         
             let localStart: Date = timePeriod.start!.addingTimeInterval(delta)
-            timePeriod.setup(newStart: localStart, newEnd: localStart.addingTimeInterval(timePeriod.duration))
+            timePeriod.setup(newStart: localStart, newEnd: localStart.addingTimeInterval(timePeriod.duration!))
             
         }
         
