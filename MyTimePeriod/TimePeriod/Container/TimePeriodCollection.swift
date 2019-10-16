@@ -1651,6 +1651,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
             //throw new ArgumentNullException( "item" );
         }
         periods.insert(item!, at: index)
+        
     } // Insert
     
     
@@ -1714,20 +1715,13 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
             //throw new ArgumentNullException( "item" );
         }
         
-        //return periods.indexOf(item!)
-        
-        var elementIndex: Int = 0
-        
-        for period in periods {
+        for (index, element) in periods.enumerated() {
             
-            
-            if period.equals(item!) {
+            if element.equals(item!) {
                 
-                return elementIndex
+                return index
                 
             }
-            
-            elementIndex += 1
             
         }
         
@@ -1757,13 +1751,15 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-    func copyTo(array: [TimePeriodProtocol?] , arrayIndex: Int) -> () {
+    func copyTo(array: inout [TimePeriodProtocol?] , arrayIndex: Int) -> () {
     
         if (array.count == 0)
         {
             //throw new ArgumentNullException( "array" );
         }
-        periods.copyTo(array, arrayIndex)
+        
+        array.insert(contentsOf: periods, at: arrayIndex)
+        
     } // CopyTo
     
     
@@ -1783,12 +1779,13 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // Clear*/
         
         
-        
+/*
     func clear() -> () {
     
         periods.clear()
         
     } // Clear
+ */
     
     
     
@@ -1818,7 +1815,21 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         {
             //throw new ArgumentNullException( "item" );
         }
-        return periods.remove(item)
+        
+        for (index, element) in periods.enumerated() {
+            
+            if element.equals(item!) {
+                
+                periods.remove(at: index)
+                    
+                return true
+                
+            }
+            
+        }
+        
+        
+        
     } // Remove
     
     
@@ -1835,6 +1846,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     /*public virtual void RemoveAt( int index )
     {
         periods.RemoveAt( index );
+     
     } // RemoveAt*/
         
         
