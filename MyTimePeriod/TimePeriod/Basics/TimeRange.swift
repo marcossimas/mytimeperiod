@@ -14,6 +14,8 @@ class TimeRange: TimeRangeProtocol {
     
     
     
+    
+    
 
     // ----------------------------------------------------------------------
     //public static readonly TimeRange Anytime = new TimeRange( true );
@@ -36,6 +38,16 @@ class TimeRange: TimeRangeProtocol {
     private var localEnd: Date
     
     
+/*
+    
+    // MARK: - Equatable
+    public static func == (lhs: TimeRange, rhs: TimeRange) -> Bool {
+        
+        return lhs.start == rhs.start && lhs.end == rhs.end
+        
+    }
+    
+*/
     
     
 

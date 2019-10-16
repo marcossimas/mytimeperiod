@@ -16,11 +16,17 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     // members
     //private readonly List<ITimeLineMoment> timeLineMoments = new List<ITimeLineMoment>();
-    var timeLineMoments: [TimelineMomentProtocol] = [TimelineMomentProtocol]()
+    //var timeLineMoments: [TimelineMomentProtocol] = [TimelineMomentProtocol]()
+    var timeLineMoments: [TimelineMomentProtocol] = []
     
     
     //private readonly Dictionary<DateTime, ITimeLineMoment> timeLineMomentLookup = new Dictionary<DateTime, ITimeLineMoment>();
-    var timeLineMomentLookup: [Date : TimelineMomentProtocol] = [Date : TimelineMomentProtocol]()
+    //var timeLineMomentLookup: [Date: TimelineMomentProtocol] = [Date: TimelineMomentProtocol]()
+    var timeLineMomentLookup: [Date: TimelineMomentProtocol] = [:]
+    
+    
+    
+    
     
     
     
@@ -355,9 +361,10 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     func find(moment: Date) -> TimelineMomentProtocol {
     
         var timeLineMoment: TimelineMomentProtocol? = nil
+        
         if (count > 0)
         {
-            timeLineMomentLookup.TryGetValue(moment, out timeLineMoment)
+            timeLineMoment = timeLineMomentLookup[moment]
         }
         return timeLineMoment!
         
@@ -380,7 +387,8 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
     
     func contains(moment: Date) -> Bool {
     
-        return timeLineMomentLookup.ContainsKey(moment)
+        
+        return timeLineMomentLookup[moment] != nil
         
     } // Contains
     
@@ -583,11 +591,11 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
         var timeLineMoment: TimelineMomentProtocol? = find(moment: moment)
         if (timeLineMoment == nil)
         {
-            timeLineMoment = TimelineMoment(moment)
-            timeLineMoments.add(timeLineMoment)
-            timeLineMomentLookup.add(moment, timeLineMoment)
+            timeLineMoment = TimelineMoment(moment: moment)
+            timeLineMoments.append(timeLineMoment!)
+            timeLineMomentLookup.updateValue(timeLineMoment!, forKey: moment)
         }
-        timeLineMoment.addStart()
+        timeLineMoment!.addStart()
         
     } // AddStart
     
@@ -620,9 +628,9 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
         
         if (timeLineMoment == nil)
         {
-            timeLineMoment = TimelineMoment(moment)
-            timeLineMoments.add(timeLineMoment)
-            timeLineMomentLookup.add(moment, timeLineMoment)
+            timeLineMoment = TimelineMoment(moment: moment)
+            timeLineMoments.append(timeLineMoment!)
+            timeLineMomentLookup.updateValue(timeLineMoment!, forKey: moment)
         }
         timeLineMoment!.addEnd()
         
@@ -665,10 +673,12 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
         }
 
         timeLineMoment!.removeStart()
+        
         if (timeLineMoment!.isEmpty)
         {
-            timeLineMoments.remove(timeLineMoment)
-            timeLineMomentLookup.remove(moment)
+            timeLineMoments.firstIndex(of: timeLineMoment)
+            //timeLineMoments.remove(timeLineMoment)
+            timeLineMomentLookup.removeValue(forKey: moment)
         }
     } // RemoveStart
     
@@ -707,10 +717,11 @@ class TimeLineMomentCollection: TimelineMomentCollectionProtocol {
         }
 
         timeLineMoment!.removeEnd()
+        
         if (timeLineMoment!.isEmpty)
         {
             timeLineMoments.remove(timeLineMoment)
-            timeLineMomentLookup.remove(moment)
+            timeLineMomentLookup.removeValue(forKey: moment)
         }
     } // RemoveEnd
     

@@ -1,5 +1,5 @@
 //
-//  TimeLineMoment.swift
+//  TimelineMoment.swift
 //  MyTimePeriod
 //
 //  Created by Marcos Simas on 15/10/19.
@@ -11,7 +11,7 @@ import Foundation
 
 
 //public class TimeLineMoment : ITimeLineMoment {
-class TimeLineMoment: TimelineMomentProtocol {
+class TimelineMoment: TimelineMomentProtocol, Equatable {
     
     
     
@@ -30,6 +30,16 @@ class TimeLineMoment: TimelineMomentProtocol {
     
     
     
+    
+    
+    // MARK: - Equatable
+    public static func == (lhs: TimelineMoment, rhs: TimelineMoment) -> Bool {
+        
+        return lhs.moment == rhs.moment
+        
+    }
+    
+    
 
     // ----------------------------------------------------------------------
     /*public TimeLineMoment( DateTime moment )
@@ -42,6 +52,8 @@ class TimeLineMoment: TimelineMomentProtocol {
     init(moment: Date)
     {
         self.localMoment = moment
+        self.localStartCount = 0
+        self.localEndCount = 0
         
     } // TimeLineMoment
     
@@ -265,4 +277,4 @@ class TimeLineMoment: TimelineMomentProtocol {
 
     
 
-} // class TimeLineMoment
+} // class TimelineMoment
