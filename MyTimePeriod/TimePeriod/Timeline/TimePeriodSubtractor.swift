@@ -10,7 +10,7 @@ import Foundation
 
 
 
-public class TimePeriodSubtractor<T> where T : ITimePeriod {
+class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     
     
     
@@ -74,9 +74,9 @@ public class TimePeriodSubtractor<T> where T : ITimePeriod {
     {
         
         localPeriodMapper = periodMapper
-        timePeriodCombiner = TimePeriodCombiner<T>(periodMapper)
-        timeGapCalculator = TimeGapCalculator<T>(periodMapper)
-        timePeriodIntersector = TimePeriodIntersector<T>(periodMapper)
+        timePeriodCombiner = TimePeriodCombiner<T>(periodMapper: periodMapper)
+        timeGapCalculator = TimeGapCalculator<T>(periodMapper: periodMapper)
+        timePeriodIntersector = TimePeriodIntersector<T>(periodMapper: periodMapper)
         
     } // TimePeriodSubtractor
     
@@ -146,7 +146,7 @@ public class TimePeriodSubtractor<T> where T : ITimePeriod {
     } // SubtractPeriods*/
     
     
-    func subtractPeriods(sourcePeriods: TimePeriodContainerProtocol, subtractingPeriods: TimePeriodCollectionProtocol, combinePeriods: Bool  = true ) -> TimePeriodCollectionProtocol {
+    func subtractPeriods(sourcePeriods: TimePeriodContainerProtocol?, subtractingPeriods: TimePeriodCollectionProtocol?, combinePeriods: Bool  = true ) -> TimePeriodCollectionProtocol {
             
         if (sourcePeriods == nil)
         {
@@ -157,14 +157,14 @@ public class TimePeriodSubtractor<T> where T : ITimePeriod {
             //throw new ArgumentNullException( "subtractingPeriods" );
         }
 
-        if (sourcePeriods.Count == 0)
+        if (sourcePeriods.count == 0)
         {
             return TimePeriodCollection()
         }
 
         if (subtractingPeriods.count == 0 && !combinePeriods)
         {
-            return TimePeriodCollection(sourcePeriods)
+            return TimePeriodCollection(timePeriods: sourcePeriods)
         }
 
         // combined source periods
@@ -173,14 +173,14 @@ public class TimePeriodSubtractor<T> where T : ITimePeriod {
         // combined subtracting periods
         if (subtractingPeriods.count == 0)
         {
-            return TimePeriodCollection(sourcePeriods)
+            return TimePeriodCollection(timePeriods: sourcePeriods)
         }
         subtractingPeriods = timePeriodCombiner.combinePeriods(subtractingPeriods)
 
         // invert subtracting periods
-        sourcePeriods.addAll(timeGapCalculator.getGaps(subtractingPeriods, TimeRange(sourcePeriods.start, sourcePeriods.end)))
+        sourcePeriods!.addAll(periods: timeGapCalculator.getGaps(periods: subtractingPeriods, limits: TimeRange(start: sourcePeriods.start, end: sourcePeriods.end)))
 
-        return timePeriodIntersector.intersectPeriods(sourcePeriods, combinePeriods)
+        return timePeriodIntersector.intersectPeriods(periods: sourcePeriods, combinePeriods: combinePeriods)
         
             
     } // SubtractPeriods

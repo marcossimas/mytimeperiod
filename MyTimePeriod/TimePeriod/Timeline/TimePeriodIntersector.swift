@@ -98,14 +98,14 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     
     
-    func intersectPeriods( ITimePeriodContainer periods, bool combinePeriods = true ) -> TimePeriodCollectionProtocol {
+    func intersectPeriods(periods: TimePeriodContainerProtocol?, combinePeriods: Bool  = true) -> TimePeriodCollectionProtocol {
     
         if (periods == nil)
         {
             //throw new ArgumentNullException( "periods" );
         }
-        var timeline: Timeline<T> = Timeline<T>(periods, periodMapper)
-        return timeline.intersectPeriods(combinePeriods)
+        let timeline: Timeline<T> = Timeline<T>(periods: periods, periodMapper: periodMapper)
+        return timeline.intersectPeriods(combinePeriods: combinePeriods)
         
     } // IntersectPeriods
     

@@ -90,13 +90,13 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     } // CombinePeriods*/
     
     
-    func combinePeriods(periods: TimePeriodContainerProtocol) -> TimePeriodCollectionProtocol {
+    func combinePeriods(periods: TimePeriodContainerProtocol?) -> TimePeriodCollectionProtocol {
     
         if (periods == nil)
         {
             //throw new ArgumentNullException( "periods" );
         }
-        var timeline: Timeline<T> = Timeline<T>(periods, periodMapper)
+        let timeline: Timeline<T> = Timeline<T>(periods: periods, periodMapper: localPeriodMapper)
         return timeline.combinePeriods()
         
         

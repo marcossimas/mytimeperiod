@@ -154,8 +154,8 @@
 		0D33E65E2356AB2100D1A239 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				0D33E66F23571DE200D1A239 /* Timeline.swift */,
 				0D33E67023571DE200D1A239 /* TimelineProtocol.swift */,
+				0D33E66F23571DE200D1A239 /* Timeline.swift */,
 				0D33E66E23571DE200D1A239 /* TimePeriodMapperProtocol.swift */,
 				0D33E6622357168C00D1A239 /* TimePeriodCombiner.swift */,
 				0D33E6602356AE5800D1A239 /* TimeGapCalculator.swift */,

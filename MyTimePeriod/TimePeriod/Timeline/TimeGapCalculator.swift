@@ -11,7 +11,7 @@ import Foundation
 
 
 //public class TimeGapCalculator<T> where T : ITimePeriod, new() {
-class TimeGapCalculator<T> where T : TimePeriodProtocol {
+class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     
     
@@ -100,14 +100,14 @@ class TimeGapCalculator<T> where T : TimePeriodProtocol {
     
     
     
-    func getGaps(periods: TimePeriodContainerProtocol , limits: TimePeriodProtocol  = nil) -> TimePeriodCollectionProtocol {
+    func getGaps(periods: TimePeriodContainerProtocol? , limits: TimePeriodProtocol?  = nil) -> TimePeriodCollectionProtocol {
     
         if (periods == nil)
         {
             //throw new ArgumentNullException( "periods" );
         }
         
-        let timeline = Timeline(periods, limits, periodMapper)
+        let timeline = Timeline<T>(periods: periods, limits: limits, periodMapper: periodMapper)
         
         return timeline.calculateGaps()
         
