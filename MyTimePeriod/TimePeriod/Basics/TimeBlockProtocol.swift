@@ -14,15 +14,15 @@ protocol TimeBlockProtocol: TimePeriodProtocol {
 
     // ----------------------------------------------------------------------
     //new DateTime Start { get; set; }
-    override var start: Date { get set }
+    override var start: Date? { get set }
 
     // ----------------------------------------------------------------------
     //new DateTime End { get; set; }
-    override var end: Date { get set }
+    override var end: Date? { get set }
 
     // ----------------------------------------------------------------------
     //new TimeSpan Duration { get; set; }
-    override var duration: TimeInterval { get set }
+    override var duration: TimeInterval? { get set }
     
 
     // ----------------------------------------------------------------------

@@ -259,9 +259,9 @@ class TimeBlock: TimeBlockProtocol {
             
         }
         
-        localStart = copy!.start
-        localEnd = copy!.end
-        localDuration = copy!.duration
+        localStart = copy!.start!
+        localEnd = copy!.end!
+        localDuration = copy!.duration!
         localIsReadOnly = copy!.isReadOnly
         
     }
@@ -299,9 +299,9 @@ class TimeBlock: TimeBlockProtocol {
             
         }
         
-        localStart = copy!.start
-        localEnd = copy!.end
-        localDuration = copy!.duration
+        localStart = copy!.start!
+        localEnd = copy!.end!
+        localDuration = copy!.duration!
         localIsReadOnly = isReadOnly
         
     }
@@ -427,7 +427,7 @@ class TimeBlock: TimeBlockProtocol {
     
     
     
-    var start: Date {
+    var start: Date? {
         
         get { return localStart }
         
@@ -435,7 +435,7 @@ class TimeBlock: TimeBlockProtocol {
             
             checkModification()
             
-            localStart = value
+            localStart = value!
             localEnd = localStart.addingTimeInterval(localDuration)
             
         }
@@ -486,7 +486,7 @@ class TimeBlock: TimeBlockProtocol {
     
     
     
-    var end: Date {
+    var end: Date? {
         
         get { return localEnd }
         
@@ -494,7 +494,7 @@ class TimeBlock: TimeBlockProtocol {
             
             checkModification()
             
-            localEnd = value
+            localEnd = value!
             localStart = localEnd.addingTimeInterval(-localDuration)
             
         }
@@ -520,14 +520,14 @@ class TimeBlock: TimeBlockProtocol {
     } // Duration*/
     
     
-    var duration: TimeInterval {
+    var duration: TimeInterval? {
         
         
         get { return localDuration }
         
         set(value) {
             
-            durationFromStart(newDuration: value)
+            durationFromStart(newDuration: value!)
             
         }
         
@@ -585,7 +585,7 @@ class TimeBlock: TimeBlockProtocol {
             
         }
         
-        return provider!.getDuration(start: start, end: end)
+        return provider!.getDuration(start: start!, end: end!)
         
     }
     
@@ -789,7 +789,7 @@ class TimeBlock: TimeBlockProtocol {
     
     func getPreviousPeriod(offset: TimeInterval) -> TimeBlockProtocol {
         
-        return TimeBlock(duration: duration, end: start.addingTimeInterval(offset), isReadOnly: isReadOnly)
+        return TimeBlock(duration: duration!, end: start!.addingTimeInterval(offset), isReadOnly: isReadOnly)
         
     }
     
@@ -830,7 +830,7 @@ class TimeBlock: TimeBlockProtocol {
     
     func getNextPeriod(offset: TimeInterval) -> TimeBlockProtocol {
         
-        return TimeBlock(start: end.addingTimeInterval(offset), duration: duration, isReadOnly: isReadOnly)
+        return TimeBlock(start: end!.addingTimeInterval(offset), duration: duration!, isReadOnly: isReadOnly)
         
     }
     
@@ -1066,8 +1066,8 @@ class TimeBlock: TimeBlockProtocol {
         {
             return nil
         }
-        let periodStart: Date = period!.start
-        let periodEnd: Date = period!.end
+        let periodStart: Date = period!.start!
+        let periodEnd: Date = period!.end!
         
         return TimeBlock(start: periodStart > localStart ? periodStart : localStart, end: periodEnd < localEnd ? periodEnd : localEnd, isReadOnly: isReadOnly)
         

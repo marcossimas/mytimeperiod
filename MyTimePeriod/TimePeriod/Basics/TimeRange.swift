@@ -14,9 +14,6 @@ class TimeRange: TimeRangeProtocol {
     
     
     
-    
-    
-    
 
     // ----------------------------------------------------------------------
     //public static readonly TimeRange Anytime = new TimeRange( true );
@@ -218,8 +215,8 @@ class TimeRange: TimeRangeProtocol {
             
         }
         
-        localStart = copy!.start
-        localEnd = copy!.end
+        localStart = copy!.start!
+        localEnd = copy!.end!
         localIsReadOnly = copy!.isReadOnly
         
     }
@@ -253,8 +250,8 @@ class TimeRange: TimeRangeProtocol {
             
         }
         
-        localStart = copy!.start
-        localEnd = copy!.end
+        localStart = copy!.start!
+        localEnd = copy!.end!
         localIsReadOnly = isReadOnly
         
     }
@@ -363,7 +360,7 @@ class TimeRange: TimeRangeProtocol {
     
     
     
-    var start: Date {
+    var start: Date? {
         
         get { return localStart }
         
@@ -371,12 +368,12 @@ class TimeRange: TimeRangeProtocol {
             
             checkModification()
             
-            if (value > localEnd)
+            if (value! > localEnd)
             {
                 //throw new ArgumentOutOfRangeException( "value" );
             }
             
-            localStart = value
+            localStart = value!
             
         }
         
@@ -426,7 +423,7 @@ class TimeRange: TimeRangeProtocol {
     
     
     
-    var end: Date {
+    var end: Date? {
         
         get { return localEnd }
         
@@ -434,11 +431,11 @@ class TimeRange: TimeRangeProtocol {
             
             checkModification()
             
-            if (value < localStart) {
+            if (value! < localStart) {
                 //throw new ArgumentOutOfRangeException( "value" );
             }
             
-            localEnd = value
+            localEnd = value!
             
         }
         
@@ -463,7 +460,7 @@ class TimeRange: TimeRangeProtocol {
     } // Duration*/
     
     
-    var duration: TimeInterval {
+    var duration: TimeInterval? {
         
         
         get { return localEnd.timeIntervalSince(localStart) }
@@ -472,7 +469,7 @@ class TimeRange: TimeRangeProtocol {
             
             checkModification()
             
-            localEnd = localStart.addingTimeInterval(value)
+            localEnd = localStart.addingTimeInterval(value!)
             
         }
         
@@ -530,7 +527,7 @@ class TimeRange: TimeRangeProtocol {
             
         }
         
-        return provider!.getDuration(start: start, end: end)
+        return provider!.getDuration(start: start!, end: end!)
         
     }
     
@@ -833,8 +830,8 @@ class TimeRange: TimeRangeProtocol {
             //throw new ArgumentNullException( "period" );
         }
         
-        expandStartTo(moment: period!.start)
-        expandEndTo(moment: period!.end)
+        expandStartTo(moment: period!.start!)
+        expandEndTo(moment: period!.end!)
         
     }
     
@@ -921,8 +918,8 @@ class TimeRange: TimeRangeProtocol {
         {
             //throw new ArgumentNullException( "period" );
         }
-        shrinkStartTo(moment: period!.start)
-        shrinkEndTo(moment: period!.end)
+        shrinkStartTo(moment: period!.start!)
+        shrinkEndTo(moment: period!.end!)
         
     }
     
@@ -992,8 +989,8 @@ class TimeRange: TimeRangeProtocol {
         {
             return nil
         }
-        let periodStart: Date = period!.start
-        let periodEnd: Date = period!.end
+        let periodStart: Date = period!.start!
+        let periodEnd: Date = period!.end!
         
         return TimeRange(start: periodStart > localStart ? periodStart : localStart, end: periodEnd < localEnd ? periodEnd : localEnd, isReadOnly: isReadOnly)
         

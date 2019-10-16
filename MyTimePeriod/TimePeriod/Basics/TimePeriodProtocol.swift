@@ -31,7 +31,7 @@ protocol TimePeriodProtocol {
 
     // ----------------------------------------------------------------------
     //TimeSpan Duration { get; }
-    var duration: TimeInterval { get }
+    var duration: TimeInterval? { get }
 
     /*// ----------------------------------------------------------------------
     //string DurationDescription { get; }
