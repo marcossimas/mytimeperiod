@@ -104,8 +104,8 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
         {
             //throw new ArgumentNullException( "periods" );
         }
-        var timeLine: Timeline<T> = Timeline<T>(periods, periodMapper)
-        return timeLine.intersectPeriods(combinePeriods)
+        var timeline: Timeline<T> = Timeline<T>(periods, periodMapper)
+        return timeline.intersectPeriods(combinePeriods)
         
     } // IntersectPeriods
     

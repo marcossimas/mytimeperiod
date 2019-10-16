@@ -55,7 +55,7 @@ class TimelineMoment: TimelineMomentProtocol, Equatable {
         self.localStartCount = 0
         self.localEndCount = 0
         
-    } // TimeLineMoment
+    } // TimelineMoment
     
     
     

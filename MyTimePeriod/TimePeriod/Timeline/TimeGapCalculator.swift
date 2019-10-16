@@ -107,9 +107,9 @@ class TimeGapCalculator<T> where T : TimePeriodProtocol {
             //throw new ArgumentNullException( "periods" );
         }
         
-        let timeLine = Timeline(periods, limits, periodMapper)
+        let timeline = Timeline(periods, limits, periodMapper)
         
-        return timeLine.calculateGaps()
+        return timeline.calculateGaps()
         
     } // GetGaps
     

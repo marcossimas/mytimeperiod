@@ -1095,7 +1095,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         }
         else if (count > 2)
         {
-            hasOverlaps = TimeLineMomentCollection(periods: self).hasOverlaps()
+            hasOverlaps = TimelineMomentCollection(periods: self).hasOverlaps()
         }
 
         return hasOverlaps
@@ -1135,7 +1135,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol {
         var hasGaps: Bool = false
         if (count > 1)
         {
-            hasGaps = TimeLineMomentCollection(periods: self).hasGaps()
+            hasGaps = TimelineMomentCollection(periods: self).hasGaps()
         }
 
         return hasGaps

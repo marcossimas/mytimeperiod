@@ -96,8 +96,8 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
         {
             //throw new ArgumentNullException( "periods" );
         }
-        var timeLine: Timeline<T> = Timeline<T>(periods, periodMapper)
-        return timeLine.combinePeriods()
+        var timeline: Timeline<T> = Timeline<T>(periods, periodMapper)
+        return timeline.combinePeriods()
         
         
     } // CombinePeriods
