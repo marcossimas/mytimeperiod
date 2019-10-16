@@ -14,15 +14,15 @@ protocol TimelineProtocol {
     
     // ----------------------------------------------------------------------
     // ITimePeriodContainer Periods { get; }
-    var periods: TimePeriodContainerProtocol { get }
+    var periods: TimePeriodContainerProtocol? { get }
 
     // ----------------------------------------------------------------------
     // ITimePeriod Limits { get; }
-    var limits: TimePeriodProtocol { get }
+    var limits: TimePeriodProtocol? { get }
 
     // ----------------------------------------------------------------------
     //ITimePeriodMapper PeriodMapper { get; }
-    var periodMapper: TimePeriodMapperProtocol { get }
+    var periodMapper: TimePeriodMapperProtocol? { get }
 
     // ----------------------------------------------------------------------
     // bool HasOverlaps();

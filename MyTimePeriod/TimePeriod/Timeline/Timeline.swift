@@ -10,7 +10,8 @@ import Foundation
 
 
 //public class TimeLine<T> : ITimeLine where T : ITimePeriod, new() {
-class Timeline<T>: TimelineProtocol where T : TimePeriodProtocol {
+class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
+    
     
     
     
