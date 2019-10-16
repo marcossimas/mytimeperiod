@@ -14,11 +14,11 @@ protocol TimelineProtocol {
     
     // ----------------------------------------------------------------------
     // ITimePeriodContainer Periods { get; }
-    var periods: TimePeriodContainerProtocol? { get }
+    var periods: TimePeriodCollection? { get }
 
     // ----------------------------------------------------------------------
     // ITimePeriod Limits { get; }
-    var limits: TimePeriodProtocol? { get }
+    var limits: TimeRange? { get }
 
     // ----------------------------------------------------------------------
     //ITimePeriodMapper PeriodMapper { get; }
@@ -34,15 +34,15 @@ protocol TimelineProtocol {
 
     // ----------------------------------------------------------------------
     // ITimePeriodCollection CombinePeriods();
-    func combinePeriods() -> TimePeriodCollectionProtocol
+    func combinePeriods() -> TimePeriodCollection
 
     // ----------------------------------------------------------------------
     // ITimePeriodCollection IntersectPeriods( bool combinePeriods );
-    func intersectPeriods(combinePeriods: Bool) -> TimePeriodCollectionProtocol
+    func intersectPeriods(combinePeriods: Bool) -> TimePeriodCollection
 
     // ----------------------------------------------------------------------
     // ITimePeriodCollection CalculateGaps();
-    func calculateGaps() -> TimePeriodCollectionProtocol
+    func calculateGaps() -> TimePeriodCollection
     
     
 } // TimelineProtocol

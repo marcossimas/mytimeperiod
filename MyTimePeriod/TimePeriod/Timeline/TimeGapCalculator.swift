@@ -19,7 +19,7 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     // members
     //private readonly ITimePeriodMapper periodMapper;
-    var localPeriodMapper: TimePeriodMapperProtocol
+    var localPeriodMapper: TimePeriodMapperProtocol?
     
     
     
@@ -35,6 +35,8 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     
     init() {
+        
+        self.localPeriodMapper = nil
         
     }
     
@@ -75,7 +77,7 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     var periodMapper: TimePeriodMapperProtocol {
 
-        get { return localPeriodMapper }
+        get { return localPeriodMapper! }
         
         
     } // PeriodMapper
@@ -100,7 +102,7 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     
     
-    func getGaps(periods: TimePeriodContainerProtocol? , limits: TimePeriodProtocol?  = nil) -> TimePeriodCollectionProtocol {
+    func getGaps(periods: TimePeriodCollection? , limits: TimePeriodProtocol?  = nil) -> TimePeriodCollection {
     
         if (periods == nil)
         {

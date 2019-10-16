@@ -170,7 +170,7 @@ class TimelineViewController: UIViewController {
             
             
             
-        let tr4 = TimeRange(start: tr3.start.addingTimeInterval(143200), end: tr3.end.addingTimeInterval(-143200))
+        let tr4 = TimeRange(start: tr3.start!.addingTimeInterval(143200), end: tr3.end!.addingTimeInterval(-143200))
             
         tr3.shrinkTo(period: tr4)
         print("")
@@ -187,8 +187,8 @@ class TimelineViewController: UIViewController {
         print("IntersectsWith?")
             
         
-        tr3.expandStartTo(moment: tr3.start.addingTimeInterval(-3600))
-        tr3.expandEndTo(moment: tr3.end.addingTimeInterval(3600))
+        tr3.expandStartTo(moment: tr3.start!.addingTimeInterval(-3600))
+        tr3.expandEndTo(moment: tr3.end!.addingTimeInterval(3600))
             
         print("TR3 - ExpandStartTo")
         print("TR3")

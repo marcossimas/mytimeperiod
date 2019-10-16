@@ -19,21 +19,21 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     // ----------------------------------------------------------------------
     // members
     //private readonly ITimePeriodMapper periodMapper;
-    var localPeriodMapper: TimePeriodMapperProtocol
+    var localPeriodMapper: TimePeriodMapperProtocol?
     
     
     //private readonly TimePeriodCombiner<T> timePeriodCombiner;
-    var timePeriodCombiner: TimePeriodCombiner<T>
+    var timePeriodCombiner: TimePeriodCombiner<T>?
     
     
     
     //private readonly TimeGapCalculator<T> timeGapCalculator;
-    var timeGapCalculator: TimeGapCalculator<T>
+    var timeGapCalculator: TimeGapCalculator<T>?
     
     
     
     //private readonly TimePeriodIntersector<T> timePeriodIntersector;
-    var timePeriodIntersector: TimePeriodIntersector<T>
+    var timePeriodIntersector: TimePeriodIntersector<T>?
     
     
     
@@ -49,6 +49,13 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     
     
     init() {
+        
+        
+        localPeriodMapper = nil
+        timePeriodCombiner = nil
+        timeGapCalculator = nil
+        timePeriodIntersector = nil
+        
         
     } // TimePeriodSubtractor
     
@@ -95,7 +102,7 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     
     var periodMapper: TimePeriodMapperProtocol {
     
-        get { return localPeriodMapper }
+        get { return localPeriodMapper! }
         
     } // PeriodMapper
     
@@ -146,41 +153,45 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     } // SubtractPeriods*/
     
     
-    func subtractPeriods(sourcePeriods: TimePeriodContainerProtocol?, subtractingPeriods: TimePeriodCollectionProtocol?, combinePeriods: Bool  = true ) -> TimePeriodCollectionProtocol {
+    func subtractPeriods(sourcePeriods: TimePeriodCollection?, subtractingPeriods: TimePeriodCollection?, combinePeriods: Bool  = true ) -> TimePeriodCollectionProtocol {
+        
+        var localSourcePeriods: TimePeriodCollection? = sourcePeriods
+        
+        var localSubtractingPeriods: TimePeriodCollection? = subtractingPeriods
             
-        if (sourcePeriods == nil)
+        if (localSourcePeriods == nil)
         {
             //throw new ArgumentNullException( "sourcePeriods" );
         }
-        if (subtractingPeriods == nil)
+        if (localSubtractingPeriods == nil)
         {
             //throw new ArgumentNullException( "subtractingPeriods" );
         }
 
-        if (sourcePeriods.count == 0)
+        if (localSourcePeriods!.count == 0)
         {
             return TimePeriodCollection()
         }
 
-        if (subtractingPeriods.count == 0 && !combinePeriods)
+        if (localSubtractingPeriods!.count == 0 && !combinePeriods)
         {
-            return TimePeriodCollection(timePeriods: sourcePeriods)
+            return TimePeriodCollection(timePeriods: localSourcePeriods!.periods)
         }
 
         // combined source periods
-        sourcePeriods = timePeriodCombiner.combinePeriods(sourcePeriods)
+        localSourcePeriods = timePeriodCombiner!.combinePeriods(periods: localSourcePeriods!)
 
         // combined subtracting periods
-        if (subtractingPeriods.count == 0)
+        if (localSubtractingPeriods!.count == 0)
         {
-            return TimePeriodCollection(timePeriods: sourcePeriods)
+            return TimePeriodCollection(timePeriods: localSourcePeriods!.periods)
         }
-        subtractingPeriods = timePeriodCombiner.combinePeriods(subtractingPeriods)
+        localSubtractingPeriods = timePeriodCombiner!.combinePeriods(periods: localSubtractingPeriods!)
 
         // invert subtracting periods
-        sourcePeriods!.addAll(periods: timeGapCalculator.getGaps(periods: subtractingPeriods, limits: TimeRange(start: sourcePeriods.start, end: sourcePeriods.end)))
+        localSourcePeriods!.addAll(periods: timeGapCalculator!.getGaps(periods: localSubtractingPeriods, limits: TimeRange(start: localSourcePeriods!.start!, end: localSourcePeriods!.end!)).periods)
 
-        return timePeriodIntersector.intersectPeriods(periods: sourcePeriods, combinePeriods: combinePeriods)
+        return timePeriodIntersector!.intersectPeriods(periods: localSourcePeriods, combinePeriods: combinePeriods)
         
             
     } // SubtractPeriods

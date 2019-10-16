@@ -15,12 +15,16 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
     
     
+    
+    
+    
+    
     // members
     //private readonly ITimeRange limits;
-    var localLimits: TimeRangeProtocol?
+    var localLimits: TimeRange?
     
     //private readonly ITimePeriodContainer periods;
-    var localPeriods: TimePeriodContainerProtocol?
+    var localPeriods: TimePeriodCollection?
     
     //private readonly ITimePeriodMapper periodMapper;
     var localPeriodMapper: TimePeriodMapperProtocol?
@@ -35,7 +39,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     } // TimeLine*/
     
     
-    init(periods: TimePeriodContainerProtocol, periodMapper: TimePeriodMapperProtocol? = nil) {
+    init(periods: TimePeriodCollection?, periodMapper: TimePeriodMapperProtocol? = nil) {
         
         localPeriods = periods
         localLimits = nil
@@ -67,7 +71,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
     
     
-    init(periods: TimePeriodContainerProtocol?, limits: TimePeriodProtocol? = nil, periodMapper: TimePeriodMapperProtocol? = nil) {
+    init(periods: TimePeriodCollection?, limits: TimePeriodProtocol? = nil, periodMapper: TimePeriodMapperProtocol? = nil) {
         
         if (periods == nil)
         {
@@ -96,9 +100,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     } // Periods*/
     
     
-    var periods: TimePeriodContainerProtocol? {
+    var periods: TimePeriodCollection? {
     
-        get { return localPeriods! }
+        get { return localPeriods }
         
     } // Periods
     
@@ -118,7 +122,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     } // Limits*/
     
     
-    var limits: TimePeriodProtocol? {
+    var limits: TimeRange? {
     
         get { return localLimits }
         
@@ -178,7 +182,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
         get
         {
-            for period in periods {
+            for period in periods! {
             
                 if (!period.isMoment)
                 {
@@ -258,15 +262,37 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     } // CombinePeriods*/
     
     
-    func combinePeriods() -> TimePeriodCollectionProtocol {
+    func combinePeriods() -> TimePeriodCollection {
     
-        if (periods.count == 0 || (periods.count > 1 && !hasNonMomentPeriods))
+        if (periods!.count == 0 || (periods!.count > 1 && !hasNonMomentPeriods))
         {
             return TimePeriodCollection()
         }
 
-        var timelineMoments: TimelineMomentCollectionProtocol = getTimelineMoments()
-        return timelineMoments.count == 0 ? TimePeriodCollection(TimeRange(copy: periods)) : combinePeriods(timelineMoments)
+        let timelineMoments: TimelineMomentCollectionProtocol = getTimelineMoments()
+        
+        //return timelineMoments.count == 0 ? TimePeriodCollection(timePeriods: TimeRange(copy: periods)) : combinePeriods(timelineMoments: timelineMoments)
+        
+        
+        if timelineMoments.count == 0 {
+            
+            var tPeriods: [TimeRange] = []
+            
+            for period in periods!.periods {
+                
+                tPeriods.append(TimeRange(copy: period))
+                
+            }
+            
+            return TimePeriodCollection(timePeriods: tPeriods)
+            
+        } else {
+            
+            return combinePeriods(timelineMoments: timelineMoments)
+            
+        }
+        
+        
     
     } // CombinePeriods
     
@@ -298,20 +324,21 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
     
     
-    func intersectPeriods(combinePeriods: Bool  = true ) -> TimePeriodCollectionProtocol {
+    func intersectPeriods(combinePeriods: Bool  = true ) -> TimePeriodCollection {
     
-        if (periods.count == 0 || (periods.count > 1 && !hasNonMomentPeriods))
+        if (periods!.count == 0 || (periods!.count > 1 && !hasNonMomentPeriods))
         {
             return TimePeriodCollection()
         }
 
-        var timelineMoments: TimelineMomentCollectionProtocol = getTimelineMoments()
+        let timelineMoments: TimelineMomentCollectionProtocol = getTimelineMoments()
+        
         if (timelineMoments.count == 0)
         {
             return TimePeriodCollection()
         }
 
-        return combinePeriods ? intersectCombinedPeriods(timelineMoments) : intersectPeriods(timelineMoments)
+        return combinePeriods ? intersectCombinedPeriods(timelineMoments: timelineMoments) : intersectPeriods(timelineMoments: timelineMoments)
         
     } // IntersectPeriods
     
@@ -349,27 +376,28 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     } // CalculateGaps*/
     
     
-    func calculateGaps() -> TimePeriodCollectionProtocol {
+    func calculateGaps() -> TimePeriodCollection {
     
         // exclude periods
-        var gapPeriods: TimePeriodCollection = TimePeriodCollection()
-        for period in periods {
+        let gapPeriods: TimePeriodCollection = TimePeriodCollection()
+        for period in periods! {
         
-            if (limits.intersectsWith(period))
+            if (limits!.intersectsWith(test: period))
             {
-                gapPeriods.append(TimeRange(copy: period))
+                gapPeriods.periods.append(TimeRange(copy: period))
             }
         }
 
-            var timelineMoments: TimelineMomentCollectionProtocol = getTimelineMoments(gapPeriods)
+        let timelineMoments: TimelineMomentCollectionProtocol = getTimelineMoments(momentPeriods: gapPeriods.periods)
+        
         if (timelineMoments.count == 0)
         {
-            return TimePeriodCollection(limits)
+            return TimePeriodCollection(timePeriods: [limits!])
         }
 
-        var range: T = T()
-        range.setup(mapPeriodStart(limits.start), mapPeriodEnd(limits.end))
-        return calculateGaps(range, timelineMoments)
+        let range: TimeRange = TimeRange()
+        range.setup(newStart: mapPeriodStart(start: limits!.start!), newEnd: mapPeriodEnd(end: limits!.end!))
+        return calculateGaps(range: range, timelineMoments: timelineMoments)
             
     } // CalculateGaps
     
@@ -390,7 +418,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
     func getTimelineMoments() -> TimelineMomentCollectionProtocol {
     
-        return getTimelineMoments(periods)
+        return getTimelineMoments(momentPeriods: periods!.periods)
         
     } // GetTimelineMoments
     
@@ -448,9 +476,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
     
         
-    func getTimelineMoments(momentPeriods: Collection<TimePeriodProtocol>) -> TimelineMomentCollectionProtocol {
+    func getTimelineMoments(momentPeriods: [TimePeriodProtocol]) -> TimelineMomentCollectionProtocol {
     
-        var timelineMoments: TimelineMomentCollection = TimelineMomentCollection()
+        let timelineMoments: TimelineMomentCollection = TimelineMomentCollection()
 
         if (momentPeriods.count == 0)
         {
@@ -458,7 +486,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         }
 
         // setup gap set with all start/end points
-        var intersections: TimePeriodCollectionProtocol = TimePeriodCollection()
+        let intersections: TimePeriodCollection = TimePeriodCollection()
         for momentPeriod in momentPeriods {
         
             if (momentPeriod.isMoment)
@@ -467,21 +495,22 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
             }
 
             // calculate the intersection between the periods
-            var intersection: TimeRangeProtocol  = limits.getIntersection(momentPeriod)
-            if (intersection == nil || intersection.isMoment)
+            var intersection: TimeRangeProtocol?  = limits!.getIntersection(period: momentPeriod)
+            
+            if (intersection == nil || intersection!.isMoment)
             {
                 continue
             }
 
             if (periodMapper != nil)
             {
-                intersection = TmeRange(mapPeriodStart(intersection.start), mapPeriodEnd(intersection.end))
+                intersection = TimeRange(start: mapPeriodStart(start: intersection!.start!), end: mapPeriodEnd(end: intersection!.end!))
             }
 
-            intersections.append(intersection)
+            intersections.periods.append(intersection!)
         }
 
-        timelineMoments.addAll(periods: intersections)
+        timelineMoments.addAll(periods: intersections.periods)
             
         return timelineMoments
             
@@ -554,9 +583,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
         
     
-    func combinePeriods(timelineMoments: TimelineMomentCollectionProtocol) -> TimePeriodCollectionProtocol {
+    func combinePeriods(timelineMoments: TimelineMomentCollectionProtocol) -> TimePeriodCollection {
         
-        var periods: TimePeriodCollection = TimePeriodCollection()
+        let periods: TimePeriodCollection = TimePeriodCollection()
         if (timelineMoments.isEmpty)
         {
             return periods
@@ -566,8 +595,8 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         var itemIndex: Int = 0
         while (itemIndex < timelineMoments.count)
         {
-            var periodStart: TimelineMomentProtocol = timelineMoments[itemIndex]
-            var startCount: Int = periodStart.startCount
+            let periodStart: TimelineMomentProtocol? = timelineMoments[itemIndex]
+            let startCount: Int = periodStart!.startCount
             if (startCount == 0)
             {
                 //throw new InvalidOperationException();
@@ -576,12 +605,12 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
             // search next period end
             // use balancing to handle overlapping periods
             var balance: Int = startCount
-            var periodEnd: TimelineMomentProtocol = nil
+            var periodEnd: TimelineMomentProtocol? = nil
             while (itemIndex < timelineMoments.count - 1 && balance > 0)
             {
                 itemIndex += 1
                 periodEnd = timelineMoments[itemIndex]
-                balance += periodEnd.balanceCount
+                balance += periodEnd!.balanceCount
             }
 
             if (periodEnd == nil)
@@ -589,7 +618,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
                 //throw new InvalidOperationException();
             }
 
-            if (periodEnd.startCount > 0) // touching
+            if (periodEnd!.startCount > 0) // touching
             {
                 itemIndex += 1
                 continue
@@ -598,9 +627,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
             // found a period
             if (itemIndex < timelineMoments.count)
             {
-                var period: T = T()
-                period.setup(periodStart.moment, periodEnd.moment)
-                periods.add(period)
+                let period: TimeRange = TimeRange()
+                period.setup(newStart: periodStart!.moment, newEnd: periodEnd!.moment)
+                periods.add(item: period)
             }
 
             itemIndex += 1
@@ -663,9 +692,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
     
         
-    func intersectCombinedPeriods(timelineMoments: TimelineMomentCollectionProtocol  ) -> TimePeriodCollectionProtocol {
+    func intersectCombinedPeriods(timelineMoments: TimelineMomentCollectionProtocol  ) -> TimePeriodCollection {
     
-        var periods: TimePeriodCollection = TimePeriodCollection()
+        let periods: TimePeriodCollection = TimePeriodCollection()
         if (timelineMoments.isEmpty)
         {
             return periods
@@ -677,10 +706,10 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
             
         for i in 0..<timelineMoments.count {
         
-            var moment: TimelineMomentProtocol = timelineMoments[i]
+            let moment: TimelineMomentProtocol = timelineMoments[i]
 
-            var startCount: Int = moment.startCount
-            var endCount: Int = moment.endCount
+            let startCount: Int = moment.startCount
+            let endCount: Int = moment.endCount
             balance += startCount
             balance -= endCount
 
@@ -697,9 +726,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
                 continue
             }
 
-            var period: T = T()
-            period.setup(timelineMoments[intersectionStart].moment, moment.moment)
-            periods.add(period)
+            let period: TimeRange = TimeRange()
+            period.setup(newStart: timelineMoments[intersectionStart].moment, newEnd: moment.moment)
+            periods.add(item: period)
             intersectionStart = -1
         }
 
@@ -758,9 +787,10 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
         
     
-    func intersectPeriods(timeLineMoments: TimelineMomentCollectionProtocol) -> TimePeriodCollectionProtocol {
+    func intersectPeriods(timelineMoments: TimelineMomentCollectionProtocol) -> TimePeriodCollection {
     
-        var periods: TimePeriodCollection = TimePeriodCollection()
+        let periods: TimePeriodCollection = TimePeriodCollection()
+        
         if (timelineMoments.isEmpty)
         {
             return periods
@@ -771,7 +801,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         var balance: Int = 0
         for i in 0..<timelineMoments.count {
         
-            var moment: TimelineMomentProtocol = timelineMoments[i]
+            let moment: TimelineMomentProtocol = timelineMoments[i]
 
             balance += moment.balanceCount
 
@@ -788,9 +818,9 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
                 continue
             }
 
-            var period: T = T()
-            period.setup(timelineMoments[intersectionStart].moment, moment.moment)
-            periods.add(period)
+            let period: TimeRange = TimeRange()
+            period.setup(newStart: timelineMoments[intersectionStart].moment, newEnd: moment.moment)
+            periods.add(item: period)
             intersectionStart = balance > 1 ? i : -1
         }
 
@@ -883,29 +913,29 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
         
     
-    func calculateGaps(range: TimePeriodProtocol , timelineMoments: TimelineMomentCollectionProtocol) -> TimePeriodCollectionProtocol {
+    func calculateGaps(range: TimePeriodProtocol , timelineMoments: TimelineMomentCollectionProtocol) -> TimePeriodCollection {
     
-        var gaps: TimePeriodCollection = TimePeriodCollection()
+        let gaps: TimePeriodCollection = TimePeriodCollection()
         if (timelineMoments.isEmpty)
         {
             return gaps
         }
 
         // range leading gap
-        var periodStart: TimelineMomentProtocol = timelineMoments.min
-        if (periodStart != null && range.start < periodStart.moment)
+        let periodStart: TimelineMomentProtocol? = timelineMoments.min!
+        if (periodStart != nil && range.start! < periodStart!.moment)
         {
-            var startingGap: T = T()
-            startingGap.setup(range.start, periodStart.moment)
-            gaps.add(startingGap)
+            let startingGap: TimeRange = TimeRange()
+            startingGap.setup(newStart: range.start!, newEnd: periodStart!.moment)
+            gaps.add(item: startingGap)
         }
 
         // search for gaps
         var itemIndex: Int = 0
         while (itemIndex < timelineMoments.count)
         {
-            var moment: TimelineMomentProtocol = timelineMoments[itemIndex]
-            var startCount: Int = moment.startCount
+            let moment: TimelineMomentProtocol = timelineMoments[itemIndex]
+            let startCount: Int = moment.startCount
             if (startCount == 0)
             {
                 //throw new InvalidOperationException()
@@ -914,12 +944,12 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
             // search next gap start
             // use balancing to handle overlapping periods
             var balance: Int = startCount
-            var gapStart: TimelineMomentProtocol = nil
+            var gapStart: TimelineMomentProtocol? = nil
             while (itemIndex < timelineMoments.count - 1 && balance > 0)
             {
                 itemIndex += 1
                 gapStart = timelineMoments[itemIndex]
-                balance += gapStart.balanceCount
+                balance += gapStart!.balanceCount
             }
 
             if (gapStart == nil)
@@ -927,7 +957,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
                 //throw new InvalidOperationException()
             }
 
-            if (gapStart.startCount > 0) // touching
+            if (gapStart!.startCount > 0) // touching
             {
                 itemIndex += 1
                 continue
@@ -936,21 +966,21 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
             // found a gap
             if (itemIndex < timelineMoments.count - 1)
             {
-                var gap: T = T()
-                gap.setup(gapStart.moment, timelineMoments[itemIndex + 1].moment)
-                gaps.add(gap)
+                let gap: TimeRange = TimeRange()
+                gap.setup(newStart: gapStart!.moment, newEnd: timelineMoments[itemIndex + 1].moment)
+                gaps.add(item: gap)
             }
 
             itemIndex += 1
         }
 
         // range closing gap
-        var periodEnd: TimelineMomentProtocol = timelineMoments.max
-        if (periodEnd != nil && range.end > periodEnd.moment)
+        let periodEnd: TimelineMomentProtocol? = timelineMoments.max!
+        if (periodEnd != nil && range.end! > periodEnd!.moment)
         {
-            var endingGap: T = T()
-            endingGap.setup(periodEnd.moment, range.end)
-            gaps.add(endingGap)
+            let endingGap: TimeRange = TimeRange()
+            endingGap.setup(newStart: periodEnd!.moment, newEnd: range.end!)
+            gaps.add(item: endingGap)
         }
 
         return gaps
@@ -975,7 +1005,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
     func mapPeriodStart(start: Date) -> Date {
     
-        return periodMapper != nil ? periodMapper.unmapStart(start) : start
+        return periodMapper != nil ? periodMapper!.unmapStart(moment: start) : start
         
     } // MapPeriodStart
     
@@ -997,7 +1027,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
         
     func mapPeriodEnd(end: Date) -> Date {
     
-        return periodMapper != nil ? periodMapper.unmapEnd(end) : end
+        return periodMapper != nil ? periodMapper!.unmapEnd(moment: end) : end
         
     } // MapPeriodEnd
     

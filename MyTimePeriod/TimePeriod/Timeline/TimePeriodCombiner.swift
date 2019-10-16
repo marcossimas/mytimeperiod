@@ -15,7 +15,7 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     
     // members
     //private readonly ITimePeriodMapper periodMapper;
-    var localPeriodMapper: TimePeriodMapperProtocol
+    var localPeriodMapper: TimePeriodMapperProtocol?
     
     
     
@@ -29,6 +29,8 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     
     
     init() {
+        
+        localPeriodMapper = nil
         
     } // TimePeriodCombiner
     
@@ -67,7 +69,7 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     
     var periodMapper: TimePeriodMapperProtocol
     {
-        get { return localPeriodMapper }
+        get { return localPeriodMapper! }
         
     } // PeriodMapper
     
@@ -90,7 +92,7 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     } // CombinePeriods*/
     
     
-    func combinePeriods(periods: TimePeriodContainerProtocol?) -> TimePeriodCollectionProtocol {
+    func combinePeriods(periods: TimePeriodCollection?) -> TimePeriodCollection {
     
         if (periods == nil)
         {

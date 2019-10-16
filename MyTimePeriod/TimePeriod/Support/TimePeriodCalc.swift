@@ -25,7 +25,7 @@ class TimePeriodCalc {
     
     static func hasInside(period: TimePeriodProtocol, test: Date) -> Bool {
         
-        return test >= period.start && test <= period.end
+        return test >= period.start! && test <= period.end!
         
     }
     
@@ -47,7 +47,7 @@ class TimePeriodCalc {
     
     static func hasInside(period: TimePeriodProtocol, test: TimePeriodProtocol) -> Bool {
         
-        return hasInside(period: period, test: test.start ) && hasInside(period: period, test: test.end)
+        return hasInside(period: period, test: test.start! ) && hasInside(period: period, test: test.end!)
         
     }
     
@@ -72,7 +72,7 @@ class TimePeriodCalc {
     
     static func intersectsWith(period: TimePeriodProtocol, test: TimePeriodProtocol) -> Bool {
         
-        return hasInside(period: period, test: test.start ) || hasInside(period: period, test: test.end ) || ( test.start < period.start && test.end > period.end )
+        return hasInside(period: period, test: test.start!) || hasInside(period: period, test: test.end!) || ( test.start! < period.start! && test.end! > period.end!)
         
     }
     
@@ -179,7 +179,7 @@ class TimePeriodCalc {
         
         
         
-        if (test.end < period.start)
+        if (test.end! < period.start!)
         {
             return PeriodRelation.after
         }
@@ -187,7 +187,7 @@ class TimePeriodCalc {
         
         
         
-        if (test.start > period.end)
+        if (test.start! > period.end!)
         {
             return PeriodRelation.before
         }
@@ -232,8 +232,8 @@ class TimePeriodCalc {
         
         
         
-        let periodContainsMyStart: Bool = hasInside(period: test, test: period.start)
-        let periodContainsMyEnd: Bool = hasInside(period: test, test: period.end)
+        let periodContainsMyStart: Bool = hasInside(period: test, test: period.start!)
+        let periodContainsMyEnd: Bool = hasInside(period: test, test: period.end!)
         
         
         if ( periodContainsMyStart && periodContainsMyEnd )

@@ -19,7 +19,7 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     // ----------------------------------------------------------------------
     // members
     //private readonly ITimePeriodMapper periodMapper;
-    var localPeriodMapper: TimePeriodMapperProtocol
+    var localPeriodMapper: TimePeriodMapperProtocol?
     
     
     
@@ -35,6 +35,8 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     
     init() {
+        
+        localPeriodMapper = nil
         
     } // TimePeriodIntersector
     
@@ -74,7 +76,7 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     var periodMapper: TimePeriodMapperProtocol
     {
         
-        get { return localPeriodMapper }
+        get { return localPeriodMapper! }
         
     } // PeriodMapper
     
@@ -98,7 +100,7 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     
     
-    func intersectPeriods(periods: TimePeriodContainerProtocol?, combinePeriods: Bool  = true) -> TimePeriodCollectionProtocol {
+    func intersectPeriods(periods: TimePeriodCollection?, combinePeriods: Bool  = true) -> TimePeriodCollectionProtocol {
     
         if (periods == nil)
         {

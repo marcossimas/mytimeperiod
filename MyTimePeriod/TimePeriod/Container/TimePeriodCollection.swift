@@ -30,6 +30,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
+    
+    
+    
     // MARK: - Equatable
     public static func == (lhs: TimePeriodCollection, rhs: TimePeriodCollection) -> Bool {
         return TimePeriodCollection.hasSameElements(array1: lhs.periods, rhs.periods)
@@ -74,6 +77,10 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
+    
+    
+    
+    
     // MARK: - Sorting
     /// Sort elements in place using given method.
     ///
@@ -86,6 +93,10 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         case .custom(let f):        periods.sort(by: f)
         }
     }
+    
+    
+    
+    
 
     /// Generate a new `TimePeriodCollection` where items are sorted with specified method.
     ///
@@ -1715,16 +1726,20 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
             //throw new ArgumentNullException( "item" );
         }
         
+        var elementIndex: Int? = nil
+    
         for (index, element) in periods.enumerated() {
             
             if element.equals(item!) {
                 
-                return index
+                elementIndex = index
+                break
                 
             }
             
         }
         
+        return elementIndex!
         
         
     } // IndexOf
@@ -1816,18 +1831,21 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
             //throw new ArgumentNullException( "item" );
         }
         
+        var result: Bool? = nil
+        
         for (index, element) in periods.enumerated() {
             
             if element.equals(item!) {
                 
                 periods.remove(at: index)
                     
-                return true
+                result = true
                 
             }
             
         }
         
+        return result!
         
         
     } // Remove
