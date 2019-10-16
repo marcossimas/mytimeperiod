@@ -64,13 +64,108 @@ class TimelineViewController: UIViewController {
     
     @objc func TPButtonTapped() {
         
-        testTimeRange()
+        testTimeline()
         
     }
     
     
     
+    private func testTimeline() {
     
+        
+    var date1: Date
+    var date2: Date
+    var date3: Date
+    var date4: Date
+    var date5: Date
+    var date6: Date
+        
+    let calendar = Calendar.current
+    
+    //var randomDate: Date!
+    
+    var newComponents = DateComponents()
+    newComponents.day = 16
+    newComponents.month = 10
+    newComponents.year = 2019
+    newComponents.hour = 8
+    newComponents.minute = 0
+    newComponents.timeZone = TimeZone(secondsFromGMT: 0)
+    date1 = calendar.date(from: newComponents)!
+    newComponents.hour = 12
+    date2 = calendar.date(from: newComponents)!
+    newComponents.hour = 9
+    date3 = calendar.date(from: newComponents)!
+    newComponents.hour = 14
+    date4 = calendar.date(from: newComponents)!
+    newComponents.hour = 0
+    date5 = calendar.date(from: newComponents)!
+    newComponents.hour = 24
+    date6 = calendar.date(from: newComponents)!
+        
+        
+    // Create 2 timeslots
+    
+    // TR1: 08-12
+    let tr1 = TimeRange(start: date1, end: date2)
+    print("TR1")
+    print(tr1.start!)
+    print(tr1.end!)
+    print("")
+    
+    
+    //TR2: 09-14
+    let tr2 = TimeRange(start: date3, end: date4)
+    print("TR2")
+    print(tr2.start!)
+    print(tr2.end!)
+    print("")
+        
+        
+    // Create timeline limits
+    let tlLimits = TimeRange(start: date5, end: date6)
+    print("tlLimits")
+    print(tlLimits.start!)
+    print(tlLimits.end!)
+    print("")
+        
+        
+        
+    // Create a TimeCollection
+    let collection: TimePeriodCollection = TimePeriodCollection()
+    collection.add(item: tr1)
+    collection.add(item: tr2)
+    
+    print("TimeCollection")
+    print(collection.hasStart)
+    print(collection.hasEnd)
+    print(collection.start)
+    print(collection.end)
+    
+    let periodCombiner: TimePeriodCombiner<TimeRange> = TimePeriodCombiner<TimeRange>()
+
+    let combinedPeriods: TimePeriodCollection = periodCombiner.combinePeriods(periods: collection)
+
+    for c in combinedPeriods {
+
+        print(c)
+
+    }
+        
+        
+        
+        
+    // Calculate Gaps
+        
+        
+    
+        
+        
+    }
+    
+    
+    
+    /*
     // Code to test TimeRange implementation
     // Tap the orange button on simulator to print results on console
     private func testTimeRange() {
@@ -237,6 +332,7 @@ class TimelineViewController: UIViewController {
         
     
     }
+ */
 
 
 }

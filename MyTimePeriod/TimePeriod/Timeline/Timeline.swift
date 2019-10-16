@@ -15,10 +15,6 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
     
     
-    
-    
-    
-    
     // members
     //private readonly ITimeRange limits;
     var localLimits: TimeRange?
@@ -39,11 +35,11 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     } // TimeLine*/
     
     
-    init(periods: TimePeriodCollection?, periodMapper: TimePeriodMapperProtocol? = nil) {
+    init(periods: TimePeriodCollection?, periodMapper: TimePeriodMapperProtocol) {
         
         localPeriods = periods
         localLimits = nil
-        localPeriodMapper = periodMapper!
+        localPeriodMapper = periodMapper
         
     } // TimeLine
     
@@ -80,7 +76,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
 
         localLimits = limits != nil ? TimeRange(copy: limits) : TimeRange(copy: periods)
         localPeriods = periods!
-        localPeriodMapper = periodMapper!
+        localPeriodMapper = periodMapper
         
     } // TimeLine
     
@@ -147,7 +143,7 @@ class Timeline<T>: TimelineProtocol where T: TimePeriodProtocol {
     
     var periodMapper: TimePeriodMapperProtocol? {
     
-        get { return localPeriodMapper! }
+        get { return localPeriodMapper }
         
     } // PeriodMapper
     

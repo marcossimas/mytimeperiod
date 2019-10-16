@@ -20,13 +20,14 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
+    
     /// The earliest beginning date of a `TimePeriod` in the group.
     /// `nil` if any `TimePeriod` in group has a nil beginning date (indefinite).
-    public internal(set) var start: Date?
+    public internal(set) var localStart: Date?
 
     /// The latest end date of a `TimePeriod` in the group.
     /// `nil` if any `TimePeriod` in group has a nil end date (indefinite).
-    public internal(set) var end: Date?
+    public internal(set) var localEnd: Date?
     
     
     
@@ -370,8 +371,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-/*
-    var start: Date {
+
+    var start: Date? {
         
         get
         {
@@ -387,7 +388,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
             {
                 return
             }
-            move(delta: value.timeIntervalSince(start))
+            move(delta: value!.timeIntervalSince(start!))
         }
         
     }
@@ -395,7 +396,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-*/
+
     
     
     
@@ -443,9 +444,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-/*
+
     
-    var end: Date {
+    var end: Date? {
         
         get
         {
@@ -458,14 +459,14 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
             {
                 return
             }
-            move(delta: value.timeIntervalSince(end))
+            move(delta: value!.timeIntervalSince(end!))
         }
         
     }
     
     
     
-*/
+
     
     
     
