@@ -12,10 +12,11 @@ import Foundation
 //public class TimePeriodCombiner<T> where T : ITimePeriod, new() {
 class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     
-    
+/*
     // members
     //private readonly ITimePeriodMapper periodMapper;
     private var localPeriodMapper: TimePeriodMapperProtocol?
+*/
     
     
     
@@ -36,8 +37,7 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
     
     
     
-    
-
+/*
     // ----------------------------------------------------------------------
     /*public TimePeriodCombiner( ITimePeriodMapper periodMapper )
     {
@@ -50,14 +50,14 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
         localPeriodMapper = periodMapper
         
     } // TimePeriodCombiner
+ */
     
     
     
     
     
     
-
-
+/*
     // ----------------------------------------------------------------------
     /*public ITimePeriodMapper PeriodMapper
     {
@@ -70,7 +70,7 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
         get { return localPeriodMapper! }
         
     } // PeriodMapper
-    
+*/
     
     
     
@@ -98,7 +98,8 @@ class TimePeriodCombiner<T> where T: TimePeriodProtocol {
             //throw new ArgumentNullException( "periods" );
         }
         
-        let timeline: Timeline<T> = Timeline<T>(periods: periods, periodMapper: localPeriodMapper)
+        //let timeline: Timeline<T> = Timeline<T>(periods: periods, periodMapper: localPeriodMapper)
+        let timeline: Timeline<T> = Timeline<T>(periods: periods)
         
         return timeline.combinePeriods()
         

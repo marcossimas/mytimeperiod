@@ -15,11 +15,12 @@ import Foundation
 class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     
-    
+/*
     // ----------------------------------------------------------------------
     // members
     //private readonly ITimePeriodMapper periodMapper;
     var localPeriodMapper: TimePeriodMapperProtocol?
+*/
     
     
     
@@ -36,7 +37,7 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     init() {
         
-        localPeriodMapper = nil
+        //localPeriodMapper = nil
         
     } // TimePeriodIntersector
     
@@ -45,7 +46,7 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     
     
-
+/*
     // ----------------------------------------------------------------------
     /*public TimePeriodIntersector( ITimePeriodMapper periodMapper )
     {
@@ -58,14 +59,14 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
         localPeriodMapper = periodMapper
         
     } // TimePeriodIntersector
+*/
     
     
     
     
     
     
-
-
+/*
     // ----------------------------------------------------------------------
     /*public ITimePeriodMapper PeriodMapper
     {
@@ -79,6 +80,7 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
         get { return localPeriodMapper! }
         
     } // PeriodMapper
+*/
     
     
     
@@ -100,22 +102,18 @@ class TimePeriodIntersector<T> where T: TimePeriodProtocol {
     
     
     
-    func intersectPeriods(periods: TimePeriodCollection?, combinePeriods: Bool  = true) -> TimePeriodCollectionProtocol {
+    func intersectPeriods(periods: TimePeriodCollection?, combinePeriods: Bool  = true) -> TimePeriodCollection {
     
         if (periods == nil)
         {
             //throw new ArgumentNullException( "periods" );
         }
-        let timeline: Timeline<T> = Timeline<T>(periods: periods, periodMapper: periodMapper)
+        //let timeline: Timeline<T> = Timeline<T>(periods: periods, periodMapper: periodMapper)
+        let timeline: Timeline<T> = Timeline<T>(periods: periods)
+        
         return timeline.intersectPeriods(combinePeriods: combinePeriods)
         
     } // IntersectPeriods
-    
-    
-    
-    
-    
-    
 
     
     

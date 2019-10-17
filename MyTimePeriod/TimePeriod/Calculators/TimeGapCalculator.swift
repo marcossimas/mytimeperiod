@@ -16,10 +16,11 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     
     
-    
+/*
     // members
     //private readonly ITimePeriodMapper periodMapper;
     var localPeriodMapper: TimePeriodMapperProtocol?
+*/
     
     
     
@@ -36,7 +37,7 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     init() {
         
-        self.localPeriodMapper = nil
+        //self.localPeriodMapper = nil
         
     }
     
@@ -45,7 +46,7 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
     
     
     
-
+/*
     // ----------------------------------------------------------------------
     /*public TimeGapCalculator( ITimePeriodMapper periodMapper )
     {
@@ -60,13 +61,13 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
         
     }
     
-    
+*/
     
     
     
     
 
-
+/*
     // ----------------------------------------------------------------------
     /*public ITimePeriodMapper PeriodMapper
     {
@@ -81,7 +82,7 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
         
         
     } // PeriodMapper
-    
+*/
     
     
     
@@ -109,7 +110,8 @@ class TimeGapCalculator<T> where T: TimePeriodProtocol {
             //throw new ArgumentNullException( "periods" );
         }
         
-        let timeline = Timeline<T>(periods: periods, limits: limits, periodMapper: periodMapper)
+        //let timeline = Timeline<T>(periods: periods, limits: limits, periodMapper: periodMapper)
+        let timeline = Timeline<T>(periods: periods, limits: limits)
         
         return timeline.calculateGaps()
         

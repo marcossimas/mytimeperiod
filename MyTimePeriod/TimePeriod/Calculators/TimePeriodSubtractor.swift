@@ -19,7 +19,7 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     // ----------------------------------------------------------------------
     // members
     //private readonly ITimePeriodMapper periodMapper;
-    var localPeriodMapper: TimePeriodMapperProtocol?
+    //var localPeriodMapper: TimePeriodMapperProtocol?
     
     
     //private readonly TimePeriodCombiner<T> timePeriodCombiner;
@@ -50,11 +50,20 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     
     init() {
         
-        
+/*
         localPeriodMapper = nil
         timePeriodCombiner = nil
         timeGapCalculator = nil
         timePeriodIntersector = nil
+*/
+        
+        
+        
+        timePeriodCombiner = TimePeriodCombiner<T>()
+        timeGapCalculator = TimeGapCalculator<T>()
+        timePeriodIntersector = TimePeriodIntersector<T>()
+        
+        
         
         
     } // TimePeriodSubtractor
@@ -76,23 +85,25 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     } // TimePeriodSubtractor*/
     
     
-    
+/*
     init(periodMapper: TimePeriodMapperProtocol)
     {
         
         localPeriodMapper = periodMapper
         timePeriodCombiner = TimePeriodCombiner<T>(periodMapper: periodMapper)
+        timePeriodCombiner = TimePeriodCombiner<T>()
         timeGapCalculator = TimeGapCalculator<T>(periodMapper: periodMapper)
         timePeriodIntersector = TimePeriodIntersector<T>(periodMapper: periodMapper)
         
     } // TimePeriodSubtractor
+ */
     
     
     
     
     
     
-
+/*
     // ----------------------------------------------------------------------
     /*public ITimePeriodMapper PeriodMapper
     {
@@ -105,6 +116,7 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
         get { return localPeriodMapper! }
         
     } // PeriodMapper
+*/
     
     
     
@@ -153,11 +165,12 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
     } // SubtractPeriods*/
     
     
-    func subtractPeriods(sourcePeriods: TimePeriodCollection?, subtractingPeriods: TimePeriodCollection?, combinePeriods: Bool  = true ) -> TimePeriodCollectionProtocol {
+    func subtractPeriods(sourcePeriods: TimePeriodCollection?, subtractingPeriods: TimePeriodCollection?, combinePeriods: Bool  = true ) -> TimePeriodCollection {
         
         var localSourcePeriods: TimePeriodCollection? = sourcePeriods
         
         var localSubtractingPeriods: TimePeriodCollection? = subtractingPeriods
+        
             
         if (localSourcePeriods == nil)
         {
@@ -167,6 +180,7 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
         {
             //throw new ArgumentNullException( "subtractingPeriods" );
         }
+        
 
         if (localSourcePeriods!.count == 0)
         {
@@ -186,10 +200,14 @@ class TimePeriodSubtractor<T> where T: TimePeriodProtocol {
         {
             return TimePeriodCollection(timePeriods: localSourcePeriods!.periods)
         }
+        
         localSubtractingPeriods = timePeriodCombiner!.combinePeriods(periods: localSubtractingPeriods!)
 
+        
         // invert subtracting periods
         localSourcePeriods!.addAll(periods: timeGapCalculator!.getGaps(periods: localSubtractingPeriods, limits: TimeRange(start: localSourcePeriods!.start!, end: localSourcePeriods!.end!)).periods)
+        
+        
 
         return timePeriodIntersector!.intersectPeriods(periods: localSourcePeriods, combinePeriods: combinePeriods)
         
