@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		0D33E657235659DD00D1A239 /* TimelineMomentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E656235659DD00D1A239 /* TimelineMomentCollection.swift */; };
 		0D33E6592356675D00D1A239 /* TimelineMoment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6582356675D00D1A239 /* TimelineMoment.swift */; };
-		0D33E6612356AE5800D1A239 /* TimeGapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6602356AE5800D1A239 /* TimeGapCalculator.swift */; };
-		0D33E6632357168C00D1A239 /* TimePeriodCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6622357168C00D1A239 /* TimePeriodCombiner.swift */; };
-		0D33E6652357189100D1A239 /* TimePeriodSubtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6642357189100D1A239 /* TimePeriodSubtractor.swift */; };
-		0D33E66723571B0F00D1A239 /* TimePeriodIntersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E66623571B0F00D1A239 /* TimePeriodIntersector.swift */; };
 		0D33E66B23571D4900D1A239 /* DurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E66823571D4900D1A239 /* DurationProvider.swift */; };
 		0D33E66C23571D4900D1A239 /* DurationProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E66923571D4900D1A239 /* DurationProviderProtocol.swift */; };
 		0D33E66D23571D4900D1A239 /* DurationFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E66A23571D4900D1A239 /* DurationFormatType.swift */; };
@@ -27,6 +23,10 @@
 		0D33E68223571E8E00D1A239 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E67C23571E8E00D1A239 /* SortType.swift */; };
 		0D33E68323571E8E00D1A239 /* TimePeriodCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E67D23571E8E00D1A239 /* TimePeriodCalc.swift */; };
 		0D33E68423571E8E00D1A239 /* TimeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E67E23571E8E00D1A239 /* TimeSpec.swift */; };
+		0D33E68A2357FEAC00D1A239 /* TimePeriodIntersector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6862357FEAC00D1A239 /* TimePeriodIntersector.swift */; };
+		0D33E68B2357FEAC00D1A239 /* TimePeriodCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6872357FEAC00D1A239 /* TimePeriodCombiner.swift */; };
+		0D33E68C2357FEAC00D1A239 /* TimeGapCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6882357FEAC00D1A239 /* TimeGapCalculator.swift */; };
+		0D33E68D2357FEAC00D1A239 /* TimePeriodSubtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D33E6892357FEAC00D1A239 /* TimePeriodSubtractor.swift */; };
 		0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D02A6235542FD00C46ECE /* TimelineViewController.swift */; };
 		0D3D02A9235543CE00C46ECE /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D0290235542FB00C46ECE /* TimeRange.swift */; };
 		0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */; };
@@ -69,10 +69,6 @@
 /* Begin PBXFileReference section */
 		0D33E656235659DD00D1A239 /* TimelineMomentCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineMomentCollection.swift; sourceTree = "<group>"; };
 		0D33E6582356675D00D1A239 /* TimelineMoment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineMoment.swift; sourceTree = "<group>"; };
-		0D33E6602356AE5800D1A239 /* TimeGapCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGapCalculator.swift; sourceTree = "<group>"; };
-		0D33E6622357168C00D1A239 /* TimePeriodCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodCombiner.swift; sourceTree = "<group>"; };
-		0D33E6642357189100D1A239 /* TimePeriodSubtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodSubtractor.swift; sourceTree = "<group>"; };
-		0D33E66623571B0F00D1A239 /* TimePeriodIntersector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodIntersector.swift; sourceTree = "<group>"; };
 		0D33E66823571D4900D1A239 /* DurationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationProvider.swift; sourceTree = "<group>"; };
 		0D33E66923571D4900D1A239 /* DurationProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationProviderProtocol.swift; sourceTree = "<group>"; };
 		0D33E66A23571D4900D1A239 /* DurationFormatType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationFormatType.swift; sourceTree = "<group>"; };
@@ -87,6 +83,10 @@
 		0D33E67C23571E8E00D1A239 /* SortType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		0D33E67D23571E8E00D1A239 /* TimePeriodCalc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodCalc.swift; sourceTree = "<group>"; };
 		0D33E67E23571E8E00D1A239 /* TimeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSpec.swift; sourceTree = "<group>"; };
+		0D33E6862357FEAC00D1A239 /* TimePeriodIntersector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodIntersector.swift; path = MyTimePeriod/TimePeriod/Calculators/TimePeriodIntersector.swift; sourceTree = SOURCE_ROOT; };
+		0D33E6872357FEAC00D1A239 /* TimePeriodCombiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodCombiner.swift; path = MyTimePeriod/TimePeriod/Calculators/TimePeriodCombiner.swift; sourceTree = SOURCE_ROOT; };
+		0D33E6882357FEAC00D1A239 /* TimeGapCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeGapCalculator.swift; path = MyTimePeriod/TimePeriod/Calculators/TimeGapCalculator.swift; sourceTree = SOURCE_ROOT; };
+		0D33E6892357FEAC00D1A239 /* TimePeriodSubtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimePeriodSubtractor.swift; path = MyTimePeriod/TimePeriod/Calculators/TimePeriodSubtractor.swift; sourceTree = SOURCE_ROOT; };
 		0D3D028C235542FB00C46ECE /* TimePeriodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriodProtocol.swift; sourceTree = "<group>"; };
 		0D3D028D235542FB00C46ECE /* TimeBlockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockProtocol.swift; sourceTree = "<group>"; };
 		0D3D028E235542FB00C46ECE /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlock.swift; sourceTree = "<group>"; };
@@ -157,10 +157,6 @@
 				0D33E67023571DE200D1A239 /* TimelineProtocol.swift */,
 				0D33E66F23571DE200D1A239 /* Timeline.swift */,
 				0D33E66E23571DE200D1A239 /* TimePeriodMapperProtocol.swift */,
-				0D33E6622357168C00D1A239 /* TimePeriodCombiner.swift */,
-				0D33E6602356AE5800D1A239 /* TimeGapCalculator.swift */,
-				0D33E66623571B0F00D1A239 /* TimePeriodIntersector.swift */,
-				0D33E6642357189100D1A239 /* TimePeriodSubtractor.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -186,6 +182,18 @@
 				0D33E67E23571E8E00D1A239 /* TimeSpec.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		0D33E6852357FE5F00D1A239 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				0D33E6882357FEAC00D1A239 /* TimeGapCalculator.swift */,
+				0D33E6872357FEAC00D1A239 /* TimePeriodCombiner.swift */,
+				0D33E6862357FEAC00D1A239 /* TimePeriodIntersector.swift */,
+				0D33E6892357FEAC00D1A239 /* TimePeriodSubtractor.swift */,
+			);
+			name = Calculators;
+			path = Timeline/Calculators;
 			sourceTree = "<group>";
 		};
 		0D3D0291235542FB00C46ECE /* Basics */ = {
@@ -230,6 +238,7 @@
 				0D3D02A0235542FB00C46ECE /* Comparer */,
 				0D33E6552356598900D1A239 /* Moment */,
 				0D33E65F2356AD4400D1A239 /* DurationProvider */,
+				0D33E6852357FE5F00D1A239 /* Calculators */,
 				0D33E65E2356AB2100D1A239 /* Timeline */,
 				0D33E67823571E5E00D1A239 /* Support */,
 			);
@@ -439,33 +448,33 @@
 			files = (
 				0D3D02AC235543E600C46ECE /* TimeBlockProtocol.swift in Sources */,
 				0D33E67623571E2200D1A239 /* TimelineMomentProtocol.swift in Sources */,
-				0D33E6632357168C00D1A239 /* TimePeriodCombiner.swift in Sources */,
 				0D3D02B02355440000C46ECE /* TimePeriodCollection.swift in Sources */,
 				0D33E68423571E8E00D1A239 /* TimeSpec.swift in Sources */,
-				0D33E6612356AE5800D1A239 /* TimeGapCalculator.swift in Sources */,
 				0D33E67323571DE200D1A239 /* TimelineProtocol.swift in Sources */,
 				0D3D02B42355441200C46ECE /* TimePeriodComparerProtocol.swift in Sources */,
 				0D3D02AE2355440000C46ECE /* TimePeriodCollectionProtocol.swift in Sources */,
 				0D33E68323571E8E00D1A239 /* TimePeriodCalc.swift in Sources */,
+				0D33E68D2357FEAC00D1A239 /* TimePeriodSubtractor.swift in Sources */,
+				0D33E68A2357FEAC00D1A239 /* TimePeriodIntersector.swift in Sources */,
 				0D33E67723571E2200D1A239 /* TimelineMomentCollectionProtocol.swift in Sources */,
 				0D33E67223571DE200D1A239 /* Timeline.swift in Sources */,
-				0D33E6652357189100D1A239 /* TimePeriodSubtractor.swift in Sources */,
 				0D33E67123571DE200D1A239 /* TimePeriodMapperProtocol.swift in Sources */,
 				0D33E657235659DD00D1A239 /* TimelineMomentCollection.swift in Sources */,
 				0D3D02AF2355440000C46ECE /* TimePeriodContainerProtocol.swift in Sources */,
 				0D3D02A9235543CE00C46ECE /* TimeRange.swift in Sources */,
 				0D3D02AD235543E900C46ECE /* TimeBlock.swift in Sources */,
 				0D33E68223571E8E00D1A239 /* SortType.swift in Sources */,
+				0D33E68B2357FEAC00D1A239 /* TimePeriodCombiner.swift in Sources */,
 				0D4F4D8723552FC900D7D01D /* AppDelegate.swift in Sources */,
 				0D33E67F23571E8E00D1A239 /* IntervalEdge.swift in Sources */,
 				0D3D02B32355441200C46ECE /* TimePeriodStartComparer.swift in Sources */,
-				0D33E66723571B0F00D1A239 /* TimePeriodIntersector.swift in Sources */,
 				0D3D02AB235543E500C46ECE /* TimeRangeProtocol.swift in Sources */,
 				0D33E68023571E8E00D1A239 /* PeriodRelation.swift in Sources */,
 				0D33E66D23571D4900D1A239 /* DurationFormatType.swift in Sources */,
 				0D33E68123571E8E00D1A239 /* SortDirection.swift in Sources */,
 				0D3D02A8235543B000C46ECE /* TimelineViewController.swift in Sources */,
 				0D3D02B22355441200C46ECE /* TimePeriodReverseComparer.swift in Sources */,
+				0D33E68C2357FEAC00D1A239 /* TimeGapCalculator.swift in Sources */,
 				0D3D02AA235543E300C46ECE /* TimePeriodProtocol.swift in Sources */,
 				0D33E66B23571D4900D1A239 /* DurationProvider.swift in Sources */,
 				0D33E6592356675D00D1A239 /* TimelineMoment.swift in Sources */,

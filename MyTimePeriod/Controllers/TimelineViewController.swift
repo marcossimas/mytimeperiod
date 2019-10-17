@@ -339,13 +339,20 @@ class TimelineViewController: UIViewController {
     var arr2: [TimePeriodProtocol?] = []
     collection.copyTo(array: &arr2, arrayIndex: 0)
     print("copyTo - Array:")
-    for p in arr {
+    for p in arr2 {
         
         print("---\(p!.start!)-\(p!.end!)")
         
     }
         
     print("hasSameData?: \(collection.hasSameData(comp: arr2))")
+        
+    print("Periods:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
         
     
         
