@@ -21,9 +21,12 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
+    
     /// The earliest beginning date of a `TimePeriod` in the group.
     /// `nil` if any `TimePeriod` in group has a nil beginning date (indefinite).
     public internal(set) var localStart: Date?
+    
+    
 
     /// The latest end date of a `TimePeriod` in the group.
     /// `nil` if any `TimePeriod` in group has a nil end date (indefinite).
@@ -74,6 +77,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     internal func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, TimePeriodProtocol) throws -> Result) rethrows -> Result {
         return try periods.reduce(initialResult, nextPartialResult)
     }
+    
     
     
     
@@ -490,6 +494,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         get
         {
             let localDuration: TimeInterval? = getDuration()
+            
             return localDuration != nil ? localDuration! : TimeSpec.maxPeriodDuration
         }
         
@@ -519,15 +524,15 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         get
         {
-            var localDuration: TimeInterval = TimeSpec.minPeriodDuration
+            var tDuration: TimeInterval = TimeSpec.minPeriodDuration
             
             for timePeriod in periods {
                 
-                localDuration = localDuration + timePeriod.duration!
+                tDuration = tDuration + timePeriod.duration!
                 
             }
             
-            return localDuration
+            return tDuration
         }
         
     }
@@ -993,7 +998,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // HasInsidePeriods*/
     
     
-    
+    // True if collection has any period inside the given test period
     func hasInsidePeriods(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -1048,7 +1053,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-    
+    // Return the periods of the collection which are inside the given test period
     func insidePeriods(test: TimePeriodProtocol?) -> TimePeriodCollection {
         
         if (test == nil)
@@ -1097,7 +1102,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-    
+    // True if collection have periods that share any sub-period.
     func hasOverlaps() -> Bool {
     
         var hasOverlaps: Bool = false
@@ -1141,7 +1146,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-    
+    // True if collection has a period of time between periods not contained by any period.
     func hasGaps() -> Bool {
         
         var hasGaps: Bool = false
@@ -1185,7 +1190,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-    
+    //True if collection has any period that share any sub-period with the given test period.
     func hasOverlapPeriods(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -1237,7 +1242,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     
     
     
-    
+    // Return the periods of the collection which overlaps the given test period
     func overlapPeriods(test: TimePeriodProtocol?) -> TimePeriodCollection {
     
         if (test == nil)
@@ -1284,7 +1289,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // True if given test date intersects any period in the collection
     func hasIntersectionPeriods(test: Date) -> Bool {
 
         for period in periods {
@@ -1325,7 +1330,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // Return the periods of the collection which are intersected by the given test date
     func intersectionPeriods(test: Date) -> TimePeriodCollection {
 
         let intersectionPeriods: TimePeriodCollection = TimePeriodCollection()
@@ -1375,7 +1380,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // True if given test period intersects any period in the collection
     func hasIntersectionPeriods(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -1427,7 +1432,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // Return the periods of the collection which are intersected by the given test period
     func intersectionPeriods(test: TimePeriodProtocol?) -> TimePeriodCollection {
     
         if (test == nil)
@@ -1482,7 +1487,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-    
+    // Return the periods of the collection which have a given relationship to the given test period
     func relationPeriods(test: TimePeriodProtocol?, relation: PeriodRelation) -> TimePeriodCollection {
     
         if (test == nil)
@@ -1525,7 +1530,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // Adds a new period to the collection
     func add(item: TimePeriodProtocol?) -> () {
     
         if (item == nil)
@@ -1566,7 +1571,10 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // ContainsPeriod*/
         
         
-        
+    
+    
+    
+    // True if collection has any period with the same start/end of the given period
     // ----------------------------------------------------------------------
     func containsPeriod(test: TimePeriodProtocol?) -> Bool {
     
@@ -1651,7 +1659,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // Inserts the given period into the collection on a given index
     func insert(index: Int, item: TimePeriodProtocol?) -> () {
     
         if (index < 0 || index > count)
@@ -1686,7 +1694,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         return periods.Contains( item );
     } // Contains*/
         
-        
+      
+    //TODO
     func contains(item: TimePeriodProtocol?) -> Bool {
     
         if (item == nil)
@@ -1719,7 +1728,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // IndexOf*/
         
     
-        
+    // Returns the collection index of a given period
     func indexOf(item: TimePeriodProtocol?) -> Int {
     
         if (item == nil)
@@ -1766,7 +1775,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // CopyTo*/
         
         
-        
+    // Copy the contents of the colection to an array at a given index
     func copyTo(array: inout [TimePeriodProtocol?] , arrayIndex: Int) -> () {
     
         if (array.count == 0)
@@ -1825,6 +1834,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
     
+    // Removes the given period from collection and return the removed period
     func remove(item: TimePeriodProtocol?) -> Bool {
     
         if (item == nil)
@@ -1868,7 +1878,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
      
     } // RemoveAt*/
         
-        
+    
+    // Removes the period at a given index from the collection and return the removed period
+    
     func removeAt(index: Int) -> () {
     
         periods.remove(at: index)
@@ -1896,7 +1908,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // IsSamePeriod*/
         
         
-        
+    
+    // True if the given period has the same start/end of the collection boundaries.
     func isSamePeriod(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -1924,6 +1937,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
+    
+    // True if the given date is inside collection start/end boundaries
     func hasInside(test: Date) -> Bool {
     
         return TimePeriodCalc.hasInside(period: self, test: test)
@@ -1951,7 +1966,8 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // HasInside*/
     
         
-        
+    
+    // True if the given period is inside collection start/end boundaries
     func hasInside(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -1982,7 +1998,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // IntersectsWith*/
         
         
-        
+    // True if the given period intersects with collection total period
     func intersectsWith(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -2014,7 +2030,9 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    
+    
+    // True if the given test period share any sub-period with the collection total period.
     func overlapsWith(test: TimePeriodProtocol?) -> Bool {
     
         if (test == nil)
@@ -2046,7 +2064,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         
         
         
-        
+    // Returns the relationship between thw given period and collection total period.
     func getRelation(test: TimePeriodProtocol?) -> PeriodRelation {
     
         if (test == nil)
@@ -2079,9 +2097,10 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
         }
         return comparer.Compare( this, other );
     } // CompareTo*/
-        
-        
-        
+    
+    
+    
+    // TODO
     func compareTo(other: TimePeriodProtocol?, comparer: TimePeriodComparerProtocol?) -> Int {
     
         if (other == nil)
@@ -2096,7 +2115,7 @@ class TimePeriodCollection: TimePeriodCollectionProtocol, Sequence, Equatable {
     } // CompareTo
     
     
-    
+ 
     
     
     

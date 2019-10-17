@@ -79,6 +79,15 @@ class TimelineViewController: UIViewController {
     var date4: Date
     var date5: Date
     var date6: Date
+    var date7: Date
+    var date8: Date
+    var date9: Date
+    var date10: Date
+    var date11: Date
+    var date12: Date
+    var date13: Date
+    var date14: Date
+    var date15: Date
         
     let calendar = Calendar.current
     
@@ -94,14 +103,32 @@ class TimelineViewController: UIViewController {
     date1 = calendar.date(from: newComponents)!
     newComponents.hour = 12
     date2 = calendar.date(from: newComponents)!
-    newComponents.hour = 9
+    newComponents.hour = 13
     date3 = calendar.date(from: newComponents)!
-    newComponents.hour = 14
+    newComponents.hour = 16
     date4 = calendar.date(from: newComponents)!
     newComponents.hour = 0
     date5 = calendar.date(from: newComponents)!
     newComponents.hour = 24
     date6 = calendar.date(from: newComponents)!
+    newComponents.hour = 7
+    date7 = calendar.date(from: newComponents)!
+    newComponents.hour = 13
+    date8 = calendar.date(from: newComponents)!
+    newComponents.hour = 14
+    date9 = calendar.date(from: newComponents)!
+    newComponents.hour = 15
+    date10 = calendar.date(from: newComponents)!
+    newComponents.hour = 8
+    date11 = calendar.date(from: newComponents)!
+    newComponents.hour = 16
+    date12 = calendar.date(from: newComponents)!
+    newComponents.hour = 17
+    date13 = calendar.date(from: newComponents)!
+    newComponents.hour = 18
+    date14 = calendar.date(from: newComponents)!
+    newComponents.hour = 19
+    date15 = calendar.date(from: newComponents)!
         
         
     // Create 2 timeslots
@@ -114,11 +141,47 @@ class TimelineViewController: UIViewController {
     print("")
     
     
-    //TR2: 09-14
+    //TR2: 13-16
     let tr2 = TimeRange(start: date3, end: date4)
     print("TR2")
     print(tr2.start!)
     print(tr2.end!)
+    print("")
+        
+    //TR3: 07-13
+    let tr3 = TimeRange(start: date7, end: date8)
+    print("TR3")
+    print(tr3.start!)
+    print(tr3.end!)
+    print("")
+        
+    //TR4: 14-15
+    let tr4 = TimeRange(start: date9, end: date10)
+    print("TR4")
+    print(tr4.start!)
+    print(tr4.end!)
+    print("")
+        
+        
+    //TR5: 13-18
+    let tr5 = TimeRange(start: date3, end: date13)
+    print("TR5")
+    print(tr5.start!)
+    print(tr5.end!)
+    print("")
+        
+    //TR6: 8-16
+    let tr6 = TimeRange(start: date11, end: date12)
+    print("TR6")
+    print(tr6.start!)
+    print(tr6.end!)
+    print("")
+        
+    //TR7: 18-19
+    let tr7 = TimeRange(start: date14, end: date15)
+    print("TR7")
+    print(tr7.start!)
+    print(tr7.end!)
     print("")
         
         
@@ -135,22 +198,162 @@ class TimelineViewController: UIViewController {
     let collection: TimePeriodCollection = TimePeriodCollection()
     collection.add(item: tr1)
     collection.add(item: tr2)
+    //collection.add(item: tr4)
     
     print("TimeCollection")
-    print(collection.hasStart)
-    print(collection.hasEnd)
-    print(collection.start)
-    print(collection.end)
+    print("hasStart?: \(collection.hasStart)")
+    print("hasEnd?: \(collection.hasEnd)")
+    print("start: \(collection.start!)")
+    print("end: \(collection.end!)")
+    print("periods: \(collection.periods)")
+    print("isAnytime?: \(collection.isAnytime)")
+    print("isMoment?: \(collection.isMoment)")
+    print("duration: \(collection.duration)")
+    print("totalDuration: \(collection.totalDuration)")
+    print("hasInsidePeriods?: \(collection.hasInsidePeriods(test: tr3))")
+    print("InsidePeriods:")
+    for p in collection.insidePeriods(test: tr3).periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+    print("hasOverlaps?: \(collection.hasOverlaps())")
+    print("hasGaps?: \(collection.hasGaps())")
+    print("hasOverlapPeriods?: \(collection.hasOverlapPeriods(test: tr4))")
+    print("overlapPeriods:")
+    for p in collection.overlapPeriods(test: tr4).periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+    print("hasIntersectionPeriods-Date?: \(collection.hasIntersectionPeriods(test: date9))")
+    print("intersectionPeriods-Date:")
+    for p in collection.intersectionPeriods(test: date9).periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+    print("hasIntersectionPeriods-Period?: \(collection.hasIntersectionPeriods(test: tr4))")
+    print("intersectionPeriods-Period:")
+    for p in collection.intersectionPeriods(test: tr4).periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+        
+    print("relationPeriods-Periods:")
+    for p in collection.relationPeriods(test: tr4, relation: PeriodRelation.inside) {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+    print("containsPeriod?: \(collection.containsPeriod(test: tr5))")
+    print("Periods BEFORE insert:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+    collection.insert(index: 1, item: tr4)
+        
+    print("Periods AFTER insert:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+    print("indexOf: \(collection.indexOf(item: tr4))")
     
-    let periodCombiner: TimePeriodCombiner<TimeRange> = TimePeriodCombiner<TimeRange>()
+        
+    var arr: [TimePeriodProtocol?] = []
+    collection.copyTo(array: &arr, arrayIndex: 0)
+    print("copyTo - Array:")
+    for p in arr {
+        
+        print("---\(p!.start!)-\(p!.end!)")
+        
+    }
+        
+    print("Periods BEFORE remove:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+    var _ = collection.remove(item: tr4)
+        
+    print("Periods AFTER remove:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+        
+    print("Periods BEFORE removeAt:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+    var _ = collection.removeAt(index: 1)
+        
+    print("Periods AFTER removeAt:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+    
+    collection.add(item: tr2)
+        
+    print("Periods:")
+    for p in collection.periods {
+        
+        print("---\(p.start!)-\(p.end!)")
+        
+    }
+        
+    print("isSamePeriod?: \(collection.isSamePeriod(test: tr6))")
+        
+    print("hasInside-Date?: \(collection.hasInside(test: date13))")
+        
+    print("hasInside-Period?: \(collection.hasInside(test: tr5))")
+        
+    print("TimeCollection")
+    print("start: \(collection.start!)")
+    print("end: \(collection.end!)")
+        
+    print("intersectsWith?: \(collection.intersectsWith(test: tr7))")
+        
+    print("overlapsWith?: \(collection.overlapsWith(test: tr5))")
+        
+    print("getRelation?: \(collection.getRelation(test: tr5))")
+        
+    
+        
+        
+        
+        
+    
+    
+        
+        
+        
+    //let periodCombiner: TimePeriodCombiner<TimeRange> = TimePeriodCombiner<TimeRange>()
 
-    let combinedPeriods: TimePeriodCollection = periodCombiner.combinePeriods(periods: collection)
+    /*let combinedPeriods: TimePeriodCollection = periodCombiner.combinePeriods(periods: collection)
 
     for c in combinedPeriods {
 
         print(c)
 
-    }
+    }*/
         
         
         

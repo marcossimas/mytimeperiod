@@ -55,6 +55,7 @@ class TimelineMomentCollection: TimelineMomentCollectionProtocol {
     
     init(periods: [TimePeriodProtocol])
     {
+        print("TimeLineMomentCollection init")
         addAll(periods: periods)
         
     } // TimeLineMomentCollection
@@ -289,6 +290,8 @@ class TimelineMomentCollection: TimelineMomentCollectionProtocol {
     
     
     func addAll(periods: [TimePeriodProtocol]) -> () {
+        
+        print("addAll count: \(periods.count)")
     
         if (periods.count == 0)
         {
@@ -297,9 +300,11 @@ class TimelineMomentCollection: TimelineMomentCollectionProtocol {
 
         for period in periods
         {
+            print("addAll loop")
             addStart(moment: period.start!)
             addEnd(moment: period.end!)
         }
+        
         sort()
     } // AddAll
     
@@ -359,15 +364,20 @@ class TimelineMomentCollection: TimelineMomentCollectionProtocol {
     
     
     
-    func find(moment: Date) -> TimelineMoment {
+    func find(moment: Date) -> TimelineMoment? {
+        
+        print("find")
+        print("find - \(count)")
     
         var timelineMoment: TimelineMoment? = nil
         
         if (count > 0)
         {
+            print("find2 - \(count)")
             timelineMoment = timelineMomentLookup[moment]
         }
-        return timelineMoment!
+        
+        return timelineMoment
         
     } // Find
     
@@ -588,10 +598,14 @@ class TimelineMomentCollection: TimelineMomentCollectionProtocol {
     
     
     func addStart(moment: Date) -> () {
+        
+        print("addStart")
     
         var timelineMoment: TimelineMoment? = find(moment: moment)
+        
         if (timelineMoment == nil)
         {
+            print("addStart2")
             timelineMoment = TimelineMoment(moment: moment)
             timelineMoments.append(timelineMoment!)
             timelineMomentLookup.updateValue(timelineMoment!, forKey: moment)
