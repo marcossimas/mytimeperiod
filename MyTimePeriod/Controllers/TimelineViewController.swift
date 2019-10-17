@@ -335,6 +335,18 @@ class TimelineViewController: UIViewController {
         
     print("getRelation?: \(collection.getRelation(test: tr5))")
         
+        
+    var arr2: [TimePeriodProtocol?] = []
+    collection.copyTo(array: &arr2, arrayIndex: 0)
+    print("copyTo - Array:")
+    for p in arr {
+        
+        print("---\(p!.start!)-\(p!.end!)")
+        
+    }
+        
+    print("hasSameData?: \(collection.hasSameData(comp: arr2))")
+        
     
         
         
